@@ -25,3 +25,7 @@ dist-ssr
 
 /public/index.html
 /build/
+package-lock.json
+yarn.lock
+.gitignore
+yarn.lock
