@@ -4,6 +4,7 @@ interface $Props {
   $primary?: boolean;
   $secondary?: boolean;
   $width?: number;
+  $pending?:boolean;
 }
 
 export const Button = styled.button<$Props>`
@@ -24,6 +25,7 @@ export const Button = styled.button<$Props>`
     background: ${({ $primary }) => ($primary ? "#271A58" : "#D0CECE")};
   }
   &:disabled {
+    cursor:not-allowed;
     background-color: #d0cece;
   }
 `;
