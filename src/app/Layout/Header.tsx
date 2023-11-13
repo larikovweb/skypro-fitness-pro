@@ -7,6 +7,7 @@ import StrelaPic from '../../assets/img/svg/Rectangle 3765.svg';
 import ProfilePic from '../../assets/img/svg/Ellipse 376.svg';
 
 export const Header: FC = () => {
+  //временно, для изменения header
 	const [page, setPage] = useState<string>('/');
 	const handleSetPage: React.MouseEventHandler<HTMLAnchorElement> = (
 		event
@@ -24,7 +25,8 @@ export const Header: FC = () => {
 				setPage('/');
 			}
 		}
-	};
+  };
+  //
 	return (
 		<Wrapper
 			style={{
