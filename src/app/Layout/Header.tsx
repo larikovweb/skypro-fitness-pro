@@ -7,7 +7,7 @@ import StrelaPic from '../../assets/img/svg/Rectangle 3765.svg';
 import ProfilePic from '../../assets/img/svg/Ellipse 376.svg';
 
 export const Header: FC = () => {
-  //временно, для изменения header
+	//временно, для изменения header
 	const [page, setPage] = useState<string>('/');
 	const handleSetPage: React.MouseEventHandler<HTMLAnchorElement> = (
 		event
@@ -21,24 +21,31 @@ export const Header: FC = () => {
 				setPage('profile');
 			} else if (target === 'About') {
 				setPage('about');
+			} else if (target === 'Войти') {
+				setPage('login');
 			} else {
 				setPage('/');
 			}
 		}
-  };
-  //
-  
+	};
+	//
+
 	return (
 		<Wrapper
 			style={{
-				background: page === '/' ? 'rgb(39,26,88)' : 'rgb(250, 250, 250)',
+				background:
+					page === '/' || page === 'login'
+						? 'rgb(39,26,88)'
+						: 'rgb(250, 250, 250)',
 			}}
 		>
 			<Container>
 				<Wrapper
 					style={{
 						background:
-							page === '/' ? 'rgb(39,26,88)' : 'rgb(250, 250, 250)',
+							page === '/' || page === 'login'
+								? 'rgb(39,26,88)'
+								: 'rgb(250, 250, 250)',
 					}}
 				>
 					{page === 'profile' ? (
@@ -64,7 +71,16 @@ export const Header: FC = () => {
 								src="src/assets/img/png/logo_dark.png"
 								alt="logo_Sky-fitness-Pro"
 							/>
-							<Button onClick={() => alert('Привет!')}>Войти</Button>
+							<Link to="/login" onClick={handleSetPage}>
+								<Button>Войти</Button>
+							</Link>
+						</>
+					) : page === 'login' ? (
+						<>
+							<Img
+								src="src/assets/img/png/logo_light.png"
+								alt="logo_Sky-fitness-Pro"
+							/>
 						</>
 					) : (
 						<>
@@ -72,12 +88,15 @@ export const Header: FC = () => {
 								src="src/assets/img/png/logo_light.png"
 								alt="logo_Sky-fitness-Pro"
 							/>
-							<Button onClick={() => alert('Привет!')}>Войти</Button>
+							<Link to="/login" onClick={handleSetPage}>
+								<Button>Войти</Button>
+							</Link>
 						</>
 					)}
 				</Wrapper>
-      </Container>
-				{/* Временная навигация. Меняет оформление header*/}
+			</Container>
+			{/* Временная навигация. Меняет оформление header*/}
+			{/* Далее либо через props с router. Либо с Redux. Либо useContext*/}
 			<Link to="/" onClick={handleSetPage}>
 				Main
 			</Link>
