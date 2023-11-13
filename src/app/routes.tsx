@@ -1,8 +1,8 @@
-import About from '../pages/About';
-import Main from '../pages/Main';
-import NotFound from '../pages/NotFound';
+import About from "../pages/About";
+import Main from "../pages/main/Main";
+import NotFound from "../pages/NotFound";
 
-import { ABOUT_ROUTE, MAIN_ROUTE, NOT_FOUND_ROUTE } from '../utils/consts';
+import { ABOUT_ROUTE, MAIN_ROUTE, NOT_FOUND_ROUTE } from "../utils/consts";
 
 export type RouteType = {
   path: string;
