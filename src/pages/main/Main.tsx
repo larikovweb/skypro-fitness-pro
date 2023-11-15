@@ -1,6 +1,4 @@
 import { FC } from "react";
-// import { Container } from "../../styled/components";
-// import { HelmetHead } from "../../components/seo/HelmetHead";
 import * as S from "./styles";
 
 const Main: FC = () => {
