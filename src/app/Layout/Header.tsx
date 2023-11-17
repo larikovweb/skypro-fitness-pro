@@ -9,7 +9,6 @@ import { LogoIco } from '../../icons/index';
 export const Header: FC = () => {
 	const isAuth = true;
 	const location = useLocation();
-	console.log(location.pathname);
 	return (
 		<Wrapper
 			style={{
