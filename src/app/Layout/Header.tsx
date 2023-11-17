@@ -1,40 +1,20 @@
 import styled from '@emotion/styled';
 import { FC } from 'react';
 import { Container } from '../../styled/components';
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
-import StrelaPic from '../../assets/img/svg/Rectangle 3765.svg';
-import ProfilePic from '../../assets/img/svg/Ellipse 376.svg';
+import { Link, useLocation } from 'react-router-dom';
+import { StrelaIco } from '../../icons/index';
+import { ProfileIco } from '../../icons/index';
+import { LogoIco } from '../../icons/index';
 
 export const Header: FC = () => {
-	//временно, для изменения header
-	const [page, setPage] = useState<string>('/');
-	const handleSetPage: React.MouseEventHandler<HTMLAnchorElement> = (
-		event
-	) => {
-		if (!(event.target instanceof HTMLElement)) {
-			return;
-		} else {
-			const target = event.target.innerText;
-			console.log(target);
-			if (target === 'Profile') {
-				setPage('profile');
-			} else if (target === 'About') {
-				setPage('about');
-			} else if (target === 'Войти') {
-				setPage('login');
-			} else {
-				setPage('/');
-			}
-		}
-	};
-	//
-
+	const isAuth = true;
+	const location = useLocation();
+	console.log(location.pathname);
 	return (
 		<Wrapper
 			style={{
 				background:
-					page === '/' || page === 'login'
+					location.pathname === '/' || location.pathname === '/login'
 						? 'rgb(39,26,88)'
 						: 'rgb(250, 250, 250)',
 			}}
@@ -43,72 +23,58 @@ export const Header: FC = () => {
 				<Wrapper
 					style={{
 						background:
-							page === '/' || page === 'login'
+							location.pathname === '/' || location.pathname === '/login'
 								? 'rgb(39,26,88)'
 								: 'rgb(250, 250, 250)',
 					}}
 				>
-					{page === 'profile' ? (
+					{location.pathname === '/profile' ? (
 						<>
-							<Img
-								src="src/assets/img/png/logo_dark.png"
-								alt="logo_Sky-fitness-Pro"
-							/>
+							<Img>
+								<LogoIco fillColor="black" />
+							</Img>
 							<ProfileDiv>
-								<img src={ProfilePic} alt="Profile icon" />
+								<ProfileIco />
 								<p>Сергей</p>
 								<button
 									style={{ background: 'transparent' }}
 									onClick={() => alert('Привет!')}
 								>
-									<img src={StrelaPic}></img>
+									<StrelaIco />
 								</button>
 							</ProfileDiv>
 						</>
-					) : page === 'about' ? (
+					) : location.pathname === '/about' ? (
 						<>
-							<Img
-								src="src/assets/img/png/logo_dark.png"
-								alt="logo_Sky-fitness-Pro"
-							/>
-							<Link to="/login" onClick={handleSetPage}>
-								<Button>Войти</Button>
-							</Link>
+							<Img>
+								<LogoIco fillColor="black" />
+							</Img>
 						</>
-					) : page === 'login' ? (
+					) : location.pathname === '/login' ? (
 						<>
-							<Img
-								src="src/assets/img/png/logo_light.png"
-								alt="logo_Sky-fitness-Pro"
-							/>
+							<Img>
+								<LogoIco fillColor="black" />
+							</Img>
 						</>
 					) : (
 						<>
-							<Img
-								src="src/assets/img/png/logo_light.png"
-								alt="logo_Sky-fitness-Pro"
-							/>
-							<Link to="/login" onClick={handleSetPage}>
-								<Button>Войти</Button>
-							</Link>
+							<Img>
+								<LogoIco fillColor="white" />
+							</Img>
 						</>
 					)}
+					<>
+						{!isAuth ? (
+							<Link
+								to="/login"
+								onClick={() => alert('Вы авторизованы!')}
+							>
+								<Button>Войти</Button>
+							</Link>
+						) : null}
+					</>
 				</Wrapper>
 			</Container>
-			{/* Временная навигация. Меняет оформление header*/}
-			{/* Далее либо через props с router. Либо с Redux. Либо useContext*/}
-			<Link to="/" onClick={handleSetPage}>
-				Main
-			</Link>
-			<Link to="/about" onClick={handleSetPage}>
-				About
-			</Link>
-			<Link to="/profile" onClick={handleSetPage}>
-				Profile
-			</Link>
-			<Link to="/404" onClick={handleSetPage}>
-				404
-			</Link>
 		</Wrapper>
 	);
 };
@@ -120,7 +86,7 @@ const Wrapper = styled.header`
 	justify-content: space-between;
 `;
 
-const Img = styled.img`
+const Img = styled.div`
 	margin-top: 1.5rem;
 	margin-bottom: 1.2rem;
 `;
