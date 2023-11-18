@@ -1,16 +1,12 @@
 import { FC } from "react";
-// import { Container } from "../../styled/components";
-// import { HelmetHead } from "../../components/seo/HelmetHead";
 import * as S from "./styles";
+import { Header } from "../../components/header/header";
 
 const Main: FC = () => {
   return (
     <>
       <S.Main>
-        <S.MainHeaderBlock>
-          <S.SkyfintessLogo src="../../../public/img/logo.png" alt="logo" />
-          <S.LoginButton>Войти</S.LoginButton>
-        </S.MainHeaderBlock>
+        <Header />
 
         <S.TitleBlock>
           <div>
