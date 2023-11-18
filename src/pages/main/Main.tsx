@@ -5,18 +5,20 @@ import { Header } from "../../components/header/header";
 const Main: FC = () => {
   return (
     <>
+    <S.Container>
       <S.Main>
         <Header />
 
         <S.TitleBlock>
-          <div>
+    
             <S.TitleBlockH3>Онлайн-тренировки для занятий дома</S.TitleBlockH3>
             <S.TitleBlockH1>
               Начните заниматься спортом и улучшите качество жизни
             </S.TitleBlockH1>
-          </div>
-          <S.SkyfintessSlogan src="../../../public/img/salesticker.svg" />
+            <S.SkyfintessSlogan src="../../../public/img/salesticker.svg" />
+          
         </S.TitleBlock>
+
 
         <S.CenterBlock>
           <S.CourseCard>
@@ -62,6 +64,7 @@ const Main: FC = () => {
 
         <S.ScrollUpBtn>Наверх ↑</S.ScrollUpBtn>
       </S.Main>
+    </S.Container>
     </>
   );
 };

@@ -1,15 +1,18 @@
 import styled from "@emotion/styled";
 
+export const Container = styled.div`
+    max-width: 100rem;
+`;
+
 export const Main = styled.div`
-  max-width: 100rem;
   background-color: #271a58;
   padding-left: 8.75rem;
   padding-right: 8.75rem;
   padding-bottom: 3.75rem;
+  position: relative;
 `;
 
 export const TitleBlock = styled.div`
-  display: flex;
   margin-top: 2.19rem;
 `;
 
@@ -40,16 +43,17 @@ export const SkyfintessSlogan = styled.img`
   height: 15.27rem;
   flex-shrink: 0;
   position: absolute;
-  right: 4.75rem;
-  top: 6.25rem;
+  right: 6.25rem;
+  top: 4.75rem;
 `;
 
 export const CenterBlock = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.69rem;
-  margin-top: 3.25rem;
-  margin-bottom: 2.12rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2.31rem;
+    row-gap: 2.75rem;    
+    margin-top: 3.25rem;
+    margin-bottom: 2.12rem;
 `;
 
 export const CourseCard = styled.div`
