@@ -25,3 +25,12 @@ dist-ssr
 
 /public/index.html
 /build/
+package-lock.json
+yarn.lock
+.gitignore
+yarn.lock
+src/pages/Profile/S.profile.tsx
+src/app/routes.tsx
+src/utils/consts.ts
+src/pages/Profile/Profile.tsx
+src/utils/consts.ts
