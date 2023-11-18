@@ -5,113 +5,77 @@ import { Link, useLocation } from 'react-router-dom';
 import { StrelaIco } from '../../icons/index';
 import { ProfileIco } from '../../icons/index';
 import { LogoIco } from '../../icons/index';
+import { MAIN_ROUTE } from '../../utils/consts';
 
 export const Header: FC = () => {
-	const isAuth = true;
-	const location = useLocation();
-	return (
-		<Wrapper
-			style={{
-				background:
-					location.pathname === '/' || location.pathname === '/login'
-						? 'rgb(39,26,88)'
-						: 'rgb(250, 250, 250)',
-			}}
-		>
-			<Container>
-				<Wrapper
-					style={{
-						background:
-							location.pathname === '/' || location.pathname === '/login'
-								? 'rgb(39,26,88)'
-								: 'rgb(250, 250, 250)',
-					}}
-				>
-					{location.pathname === '/profile' ? (
-						<>
-							<Img>
-								<LogoIco fillColor="black" />
-							</Img>
-							<ProfileDiv>
-								<ProfileIco />
-								<p>Сергей</p>
-								<button
-									style={{ background: 'transparent' }}
-									onClick={() => alert('Привет!')}
-								>
-									<StrelaIco />
-								</button>
-							</ProfileDiv>
-						</>
-					) : location.pathname === '/about' ? (
-						<>
-							<Img>
-								<LogoIco fillColor="black" />
-							</Img>
-						</>
-					) : location.pathname === '/login' ? (
-						<>
-							<Img>
-								<LogoIco fillColor="black" />
-							</Img>
-						</>
-					) : (
-						<>
-							<Img>
-								<LogoIco fillColor="white" />
-							</Img>
-						</>
-					)}
-					<>
-						{!isAuth ? (
-							<Link
-								to="/login"
-								onClick={() => alert('Вы авторизованы!')}
-							>
-								<Button>Войти</Button>
-							</Link>
-						) : null}
-					</>
-				</Wrapper>
-			</Container>
-		</Wrapper>
-	);
+  const isAuth = false;
+  const { pathname } = useLocation();
+
+  return (
+    <Wrapper
+      style={{
+        backgroundColor: pathname === '/' ? 'rgb(39,26,88)' : 'rgb(250,250,250)',
+      }}>
+      <MyContainer>
+        <Img to={MAIN_ROUTE}>
+          <LogoIco fillColor={pathname === '/' ? '#ffffff' : '#140d40'} />
+        </Img>
+        {!isAuth ? (
+          <Link to="/login" onClick={() => alert('Вы авторизованы!')}>
+            <Button>Войти</Button>
+          </Link>
+        ) : (
+          <ProfileDiv>
+            <ProfileIco />
+            <p>Сергей</p>
+            <button style={{ background: 'transparent' }} onClick={() => alert('Привет!')}>
+              <StrelaIco />
+            </button>
+          </ProfileDiv>
+        )}
+      </MyContainer>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.header`
-	background: #271a58;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+  background: transparent;
 `;
 
-const Img = styled.div`
-	margin-top: 1.5rem;
-	margin-bottom: 1.2rem;
+const MyContainer = styled(Container)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Img = styled(Link)`
+  margin-top: 1.5rem;
+  margin-bottom: 1.2rem;
+  svg {
+    transition: fill 0.3s;
+  }
 `;
 const Button = styled.button`
-	background: #140d40;
-	color: whitesmoke;
-	height: 1.5rem;
-	width: 4.8rem;
-	border-radius: 2.8rem;
-	font-size: 1rem;
-	margin-top: 1.5rem;
-
-	line-height: 1.5rem;
-	padding: 1.25px 1.25px 1.25px 1.25px;
-	display: flex;
-	text-align: center;
-	align-items: center;
-	justify-content: center;
+  background: #140d40;
+  color: whitesmoke;
+  height: 1.5rem;
+  width: 4.8rem;
+  border-radius: 2.8rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 1.25px 1.25px 1.25px 1.25px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ProfileDiv = styled.div`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-content: center;
-	justify-content: center;
-	align-items: center;
-	gap: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
 `;
