@@ -2,6 +2,7 @@ import { FC } from "react";
 import * as S from "./styles";
 import { CourseItem } from "../../components/courseCard/coursecard";
 import { CourseImg } from "../../assets/img/courses";
+import { SloganImg } from "../../assets/img/main";
 
 const Main: FC = () => {
   const CoursesArray = [
@@ -41,7 +42,7 @@ const Main: FC = () => {
             <S.TitleBlockH1>
               Начните заниматься спортом и улучшите качество жизни
             </S.TitleBlockH1>
-            <S.SkyfintessSlogan src="../../../public/img/salesticker.svg" />
+            <S.SkyfintessSlogan src={SloganImg} />
         </S.TitleBlock>
 
         <S.CenterBlock>

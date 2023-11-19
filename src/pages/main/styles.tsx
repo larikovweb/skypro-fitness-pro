@@ -13,7 +13,7 @@ export const Main = styled.div`
 `;
 
 export const TitleBlock = styled.div`
-  margin-top: 2.19rem;
+  padding-top: 2.19rem;
 `;
 
 export const TitleBlockH3 = styled.h3`
@@ -44,7 +44,7 @@ export const SkyfintessSlogan = styled.img`
   flex-shrink: 0;
   position: absolute;
   right: 6.25rem;
-  top: 4.75rem;
+  top: 0rem;
 `;
 
 export const CenterBlock = styled.div`
