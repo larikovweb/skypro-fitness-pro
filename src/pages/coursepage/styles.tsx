@@ -6,6 +6,7 @@ export const Container = styled.div`
   padding-left: 8.75rem;
   paddirn-right: 8.75rem;
   padding-top: 4.69rem;
+  padding-bottom: 5.94rem;
   position: relative;
 `;
 
@@ -119,18 +120,19 @@ export const BookBlock = styled.div`
   flex-shrink: 0;
   border-radius: 1.875rem;
   background: #f9ebff;
-  display: flex;
+  padding-left: 2.25rem;
+  display: grid;
+  grid-template-columns: 51.43rem 21.6rem; 
 `;
 
 export const BookBlockText = styled.div`
-    padding-top: 2.87rem;
-    padding-left: 3.25rem;
-    margin-bottom: 5.94rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.13rem;
 `;
 
 export const BookBlockH3 = styled.h3`
-  width: 51.4375rem;
-  height: 7.5rem;
+  padding-top: 2.87rem;
   color: #000;
   font-variant-numeric: lining-nums proportional-nums;
   font-size: 2rem;
@@ -152,7 +154,6 @@ export const BookBlockBtn = styled.button`
   font-weight: 400;
   line-height: 1.5rem; /* 133.333% */
   letter-spacing: -0.00313rem;
-  margin-top: 2.13rem;
 `;
 
 export const CallImage = styled.div`
