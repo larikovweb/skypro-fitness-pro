@@ -33,6 +33,18 @@ const About: FC = () => {
       </S.NumberedList>
 
       <S.TitleH2>Направления:</S.TitleH2>
+      <S.PracticeList>
+        <S.PracticeListItem key="1">Йога для новичков</S.PracticeListItem>
+        <S.PracticeListItem key="2">Классическая йога</S.PracticeListItem>
+        <S.PracticeListItem key="3">Йогатерапия</S.PracticeListItem>
+        <S.PracticeListItem key="4">Кундалини-йога</S.PracticeListItem>
+        <S.PracticeListItem key="5">Хатха-йога</S.PracticeListItem>
+        <S.PracticeListItem key="6">Аштанга-йога</S.PracticeListItem>
+      </S.PracticeList>
+
+      <S.BenefitText>Благодаря комплексному воздействию упражнений происходит проработка всех групп мышц, тренировка суставов, улучшается циркуляция крови. Кроме того, упражнения дарят отличное настроение, заряжают бодростью и помогают противостоять стрессам.</S.BenefitText>
+
+      
     </S.Container>
   );
 };

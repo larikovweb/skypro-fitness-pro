@@ -84,6 +84,35 @@ export const DescriptionText = styled.p`
     line-height: 2rem; /* 133.333% */;
 `;
 
+export const PracticeList = styled.div`
+    margin-top: 1.38rem;
+    margin-bottom: 4.69rem;
+    height: 6rem;
+    display: grid;
+    grid-template-columns: 15.875rem 15.875rem;
+    column-gap: 10.5rem;
+`;
+
+export const PracticeListItem = styled.li`
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2rem; 
+`;
+
+export const BenefitText = styled.p`
+    width: 72.5rem;
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2rem; /* 133.333% */;
+    margin-bottom: 4.69rem;  
+`;
+
 export const BookBlock = styled.div`
   width: 72.5rem;
   height: 18.75rem;
@@ -130,5 +159,4 @@ export const CallImage = styled.div`
   width: 20.625rem;
   height: 21.09538rem;
   flex-shrink: 0;
-
 `;
