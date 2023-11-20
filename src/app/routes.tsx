@@ -1,4 +1,4 @@
-import About from "../pages/coursepage/About";
+import CoursePage from "../pages/coursepage/About";
 import Main from "../pages/main/Main";
 import NotFound from "../pages/NotFound";
 
@@ -11,7 +11,7 @@ export type RouteType = {
 
 export const publicRoutes: RouteType[] = [
   { path: MAIN_ROUTE, component: <Main /> },
-  { path: ABOUT_ROUTE, component: <About /> },
+  { path: ABOUT_ROUTE, component: <CoursePage /> },
 
   //...
   { path: NOT_FOUND_ROUTE, component: <NotFound /> },
