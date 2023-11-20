@@ -15,6 +15,7 @@ export const TitleBlockImage = styled.img`
   border-radius: 1.875rem;
   background: rgba(205, 205, 205, 0.1);
   backdrop-filter: blur(14.51865291595459px);
+  margin-bottom: 4.69rem;
 `;
 
 export const TitleBlockH1 = styled.h1`
@@ -37,6 +38,50 @@ export const TitleH2 = styled.h2`
   font-style: normal;
   font-weight: 400;
   line-height: 3rem; /* 120% */
+`;
+
+export const NumberedList = styled.div`
+    display: flex;
+    gap: 5.44rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    margin-bottom: 4.69rem;
+`;
+
+export const NumberedListItem = styled.div`
+    display: flex;
+    gap: 1.5rem;
+`;
+
+export const Circle = styled.div`
+    border-radius: 75.14294rem;
+    background: #C7E957;
+    display: flex;
+    width: 4.1875rem;
+    height: 4.1875rem;
+    align-items: flex-end;
+    justify-content: flex-end;
+`;
+
+export const CircleNumber = styled.h3`
+    width: 2.50475rem;
+    height: 3.33969rem;
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.5rem; /* 125% */;
+`;
+
+export const DescriptionText = styled.p`
+    width: 15.25rem;
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2rem; /* 133.333% */;
 `;
 
 export const BookBlock = styled.div`
