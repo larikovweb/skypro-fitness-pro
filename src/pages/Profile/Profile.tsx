@@ -2,12 +2,17 @@ import { FC } from "react";
 import styled from "@emotion/styled";
 import { Container } from "../../styled/components";
 import { createButton } from "../../components/form/Button";
+import { HelmetHead } from "../../components/seo/HelmetHead";
 import * as S from "./S.profile";
 
 export const ProfilePage: FC = () => {
   const user = "user";
   return (
     <Container>
+      <HelmetHead
+        title={user ? `Ваш профиль` : `Страница пользователя ${user}`}
+        descr={user ? `Ваш профиль` : `Страница пользователя ${user}`}
+      />
       <S.CardUser>
         <S.Info>
           <S.Title>Мой профиль</S.Title>
