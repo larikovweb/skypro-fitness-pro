@@ -10,7 +10,7 @@ type Props = {
 export const CourseItem: FC<Props> = ({ name, path, showBtn }) => {
   return (
     <S.CourseCard>
-      <S.CourseImage src={path} alt="profcard1" />
+      <S.CourseImage src={path} alt="{name}" />
       <S.CourseName>{name}</S.CourseName>
       {showBtn && <S.FurtherBtn>Перейти →</S.FurtherBtn>}
     </S.CourseCard>

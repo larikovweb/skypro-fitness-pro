@@ -3,6 +3,8 @@ import * as S from "./styles";
 import { CourseItem } from "../../components/courseCard/coursecard";
 import { CourseImg } from "../../assets/img/courses";
 import { SloganImg } from "../../assets/img/main";
+import { Link } from "react-router-dom";
+import { Container } from "../../styled/components";
 
 const Main: FC = () => {
   const CoursesArray = [
@@ -34,7 +36,7 @@ const Main: FC = () => {
   ]
 
   return (
-    <S.Container>
+    <Container>
       <S.Main>
 
         <S.TitleBlock>
@@ -49,7 +51,10 @@ const Main: FC = () => {
           {
             CoursesArray.map((course)=> {
               return (
-                <CourseItem name={course.name} path={course.img} key={course.id} showBtn={false}/>
+                // Сделала пока переход на страницу курса, после подключения базы данных можно будет отредактировать и рендерить нужный курс 
+                <Link to={`/about`}>
+                  <CourseItem name={course.name} path={course.img} key={course.id} showBtn={false}/>
+                </Link>
               )
             }) 
           }
@@ -57,7 +62,7 @@ const Main: FC = () => {
 
         <S.ScrollUpBtn>Наверх ↑</S.ScrollUpBtn>
       </S.Main>
-    </S.Container>
+    </Container>
   );
 };
 
