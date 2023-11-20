@@ -1,20 +1,20 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
 import { Container } from "../../styled/components";
-import { createButton } from "../../components/Buttons/Button";
-import * as S from "../Profile/S.profile";
+import { createButton } from "../../components/form/Button";
+import * as S from "./S.profile";
 
 export const ProfilePage: FC = () => {
   const user = "user";
   return (
     <Container>
-      <S.profileCardUser>
-        <S.profileInfo>
-          <S.profileTitle>Мой профиль</S.profileTitle>
-          <S.profileP>Логин: {user}</S.profileP>
-          <S.profileP>Пароль: 4fkhdj880d</S.profileP>
+      <S.CardUser>
+        <S.Info>
+          <S.Title>Мой профиль</S.Title>
+          <S.Ptext>Логин: {user}</S.Ptext>
+          <S.Ptext>Пароль: 4fkhdj880d</S.Ptext>
 
-          <S.profileEdit>
+          <S.Edit>
             <Button $primary type="submit" onClick={() => alert("no Link")}>
               Редактировать логин
             </Button>
@@ -26,37 +26,37 @@ export const ProfilePage: FC = () => {
             >
               Редактировать пароль
             </Button>
-          </S.profileEdit>
-        </S.profileInfo>
-        <S.profileTitle>Мои курсы</S.profileTitle>
+          </S.Edit>
+        </S.Info>
+        <S.Title>Мои курсы</S.Title>
 
-        <S.profileCourseCardBlock>
-          <S.profileCourceCard>
-            <S.profileCourceCardTitle>
-              <S.profileCourceCardTitleP>Йога</S.profileCourceCardTitleP>
-            </S.profileCourceCardTitle>
-            <S.profileCourceCardLink onClick={() => alert("no Link")}>
+        <S.CourseCardBlock>
+          <S.CourceCard>
+            <S.CourceCardTitle>
+              <S.CourceCardTitleP>Йога</S.CourceCardTitleP>
+            </S.CourceCardTitle>
+            <S.CourceCardLink onClick={() => alert("no Link")}>
               Перейти
-            </S.profileCourceCardLink>
-          </S.profileCourceCard>
-          <S.profileCourceCard>
-            <S.profileCourceCardTitle>
-              <S.profileCourceCardTitleP>Йога</S.profileCourceCardTitleP>
-            </S.profileCourceCardTitle>
-            <S.profileCourceCardLink onClick={() => alert("no Link")}>
+            </S.CourceCardLink>
+          </S.CourceCard>
+          <S.CourceCard>
+            <S.CourceCardTitle>
+              <S.CourceCardTitleP>Йога</S.CourceCardTitleP>
+            </S.CourceCardTitle>
+            <S.CourceCardLink onClick={() => alert("no Link")}>
               Перейти
-            </S.profileCourceCardLink>
-          </S.profileCourceCard>
-          <S.profileCourceCard>
-            <S.profileCourceCardTitle>
-              <S.profileCourceCardTitleP>Йога</S.profileCourceCardTitleP>
-            </S.profileCourceCardTitle>
-            <S.profileCourceCardLink onClick={() => alert("no Link")}>
+            </S.CourceCardLink>
+          </S.CourceCard>
+          <S.CourceCard>
+            <S.CourceCardTitle>
+              <S.CourceCardTitleP>Йога</S.CourceCardTitleP>
+            </S.CourceCardTitle>
+            <S.CourceCardLink onClick={() => alert("no Link")}>
               Перейти
-            </S.profileCourceCardLink>
-          </S.profileCourceCard>
-        </S.profileCourseCardBlock>
-      </S.profileCardUser>
+            </S.CourceCardLink>
+          </S.CourceCard>
+        </S.CourseCardBlock>
+      </S.CardUser>
     </Container>
   );
 };
