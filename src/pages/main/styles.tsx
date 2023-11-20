@@ -1,9 +1,5 @@
 import styled from "@emotion/styled";
 
-export const Container = styled.div`
-    max-width: 100rem;
-`;
-
 export const Main = styled.div`
   background-color: #271a58;
   padding-left: 8.75rem;

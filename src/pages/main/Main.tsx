@@ -36,33 +36,32 @@ const Main: FC = () => {
   ]
 
   return (
-    <Container>
-      <S.Main>
+    <S.Main>
+      <Container>
+      <S.TitleBlock>
+          <S.TitleBlockH3>Онлайн-тренировки для занятий дома</S.TitleBlockH3>
+          <S.TitleBlockH1>
+            Начните заниматься спортом и улучшите качество жизни
+          </S.TitleBlockH1>
+          <S.SkyfintessSlogan src={SloganImg} />
+      </S.TitleBlock>
 
-        <S.TitleBlock>
-            <S.TitleBlockH3>Онлайн-тренировки для занятий дома</S.TitleBlockH3>
-            <S.TitleBlockH1>
-              Начните заниматься спортом и улучшите качество жизни
-            </S.TitleBlockH1>
-            <S.SkyfintessSlogan src={SloganImg} />
-        </S.TitleBlock>
+      <S.CenterBlock>
+        {
+          CoursesArray.map((course)=> {
+            return (
+              // Сделала пока переход на страницу курса, после подключения базы данных можно будет отредактировать и рендерить нужный курс 
+              <Link to={`/about`}>
+                <CourseItem name={course.name} path={course.img} key={course.id} showBtn={false}/>
+              </Link>
+            )
+          }) 
+        }
+      </S.CenterBlock>
 
-        <S.CenterBlock>
-          {
-            CoursesArray.map((course)=> {
-              return (
-                // Сделала пока переход на страницу курса, после подключения базы данных можно будет отредактировать и рендерить нужный курс 
-                <Link to={`/about`}>
-                  <CourseItem name={course.name} path={course.img} key={course.id} showBtn={false}/>
-                </Link>
-              )
-            }) 
-          }
-        </S.CenterBlock>
-
-        <S.ScrollUpBtn>Наверх ↑</S.ScrollUpBtn>
-      </S.Main>
-    </Container>
+      <S.ScrollUpBtn>Наверх ↑</S.ScrollUpBtn>
+      </Container>
+    </S.Main>
   );
 };
 
