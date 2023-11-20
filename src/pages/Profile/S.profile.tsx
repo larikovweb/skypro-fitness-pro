@@ -2,18 +2,19 @@ import styled from "@emotion/styled";
 
 export const CardUser = styled.div`
   min-height: 100vh;
-  width: 72, 5rem;
-  padding: 8.75rem 0rem;
+  width: 72.5rem;
+  padding: 4.69rem 0 0 0;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  margin-bottom: 4, 6875rem;
+  margin-bottom: 4.6875rem;
 `;
+
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  margin-bottom: 4, 6875rem;
+  margin-bottom: 4.875rem;
 `;
 export const Title = styled.div`
   color: #000;
