@@ -60,5 +60,4 @@ const Profile: FC = () => {
     </Container>
   );
 };
-
 export default Profile;
