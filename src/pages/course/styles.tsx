@@ -1,4 +1,5 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
+import { Button } from '../../components/form/Button';
 
 export const CoursePage = styled.div`
   background: #fafafa;
@@ -7,7 +8,7 @@ export const CoursePage = styled.div`
 `;
 
 export const TitleBlock = styled.div`
-    position: relative;
+  position: relative;
 `;
 
 export const TitleBlockImage = styled.img`
@@ -138,19 +139,8 @@ export const BookBlockH3 = styled.h3`
   line-height: 2.5rem; /* 125% */
 `;
 
-export const BookBlockBtn = styled.button`
-  width: 17.1875rem;
-  height: 3.25rem;
-  flex-shrink: 0;
-  border-radius: 2.875rem;
-  background: var(--palette-purple-90, #580ea2);
-  color: #fff;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem; /* 133.333% */
-  letter-spacing: -0.00313rem;
+export const MyButton = styled(Button)`
+  width: 18.1875rem;
 `;
 
 export const CallImage = styled.div`

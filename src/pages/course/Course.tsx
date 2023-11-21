@@ -63,9 +63,8 @@ const Course: FC = () => {
               Оставьте заявку на пробное занятие, мы свяжемся с вами, поможем с выбором направления
               и тренера, с которым тренировки принесут здоровье и радость!
             </S.BookBlockH3>
-            <S.BookBlockBtn>Записаться на тренировку</S.BookBlockBtn>
+            <S.MyButton $primary>Записаться на тренировку</S.MyButton>
           </S.BookBlockText>
-
           <S.CallImage>
             <PhoneSvgImage />
           </S.CallImage>
