@@ -20,4 +20,5 @@ export const Layout: FC = () => {
 
 const Main = styled.main`
   display: block;
+  background-color: #fafafa;
 `;
