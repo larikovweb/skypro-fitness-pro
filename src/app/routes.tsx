@@ -1,8 +1,8 @@
-import About from "../pages/About";
-import Main from "../pages/Main";
-import { ProfilePage } from "../pages/profile/Profile";
-import Workout from "../pages/Workout";
-import NotFound from "../pages/NotFound";
+import About from '../pages/About';
+import Main from '../pages/main/Main';
+import Profile from '../pages/Profile';
+import Workout from '../pages/Workout';
+import NotFound from '../pages/NotFound';
 
 import {
   ABOUT_ROUTE,
@@ -10,7 +10,7 @@ import {
   NOT_FOUND_ROUTE,
   PROFILE_ROUTE,
   WORKOUT_ROUTE,
-} from "../utils/consts";
+} from '../utils/consts';
 
 export type RouteType = {
   path: string;
@@ -26,6 +26,6 @@ export const publicRoutes: RouteType[] = [
 ];
 
 export const privateRoutes: RouteType[] = [
-  { path: PROFILE_ROUTE, component: <ProfilePage /> },
+  { path: PROFILE_ROUTE, component: <Profile /> },
   { path: WORKOUT_ROUTE, component: <Workout /> },
 ];
