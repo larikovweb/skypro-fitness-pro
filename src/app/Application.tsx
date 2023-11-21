@@ -4,27 +4,40 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { publicRoutes, privateRoutes } from './routes';
 import { ProtectedRoute } from '../components/helpers/ProtectedRoute';
+import { RootState, setupStore } from '../store/store';
+import { Provider, useSelector } from 'react-redux';
+import { isNull } from '@bunt/is';
+import { useAuth } from '../hooks/useAuth';
 const Application: FC = () => {
-  //для доступа к profile и workout ставим true
-  const auth = true;
+  const store = setupStore();
+
   return (
     <>
       <GlobalStyles />
-      <BrowserRouter>
-        <Routes>
-          <Route element={<Layout isAuth={auth} />}>
-            {publicRoutes.map(({ path, component }) => (
-              <Route key={path} path={path} element={component} />
-            ))}
-            <Route element={<ProtectedRoute auth={auth} />}>
-              {privateRoutes.map(({ path, component }) => (
-                <Route key={path} path={path} element={component} />
-              ))}
-            </Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <RouteSelect />
+        </BrowserRouter>
+      </Provider>
     </>
+  );
+};
+
+const RouteSelect: FC = () => {
+  const { isAuth } = useAuth();
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        {publicRoutes.map(({ path, component }) => (
+          <Route key={path} path={path} element={component} />
+        ))}
+        <Route element={<ProtectedRoute auth={isAuth} />}>
+          {privateRoutes.map(
+            ({ path, component }) => isAuth && <Route key={path} path={path} element={component} />,
+          )}
+        </Route>
+      </Route>
+    </Routes>
   );
 };
 
