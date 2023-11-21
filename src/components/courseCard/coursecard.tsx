@@ -1,18 +1,19 @@
-import { FC } from "react";
-import * as S from "./styles";
+import { FC } from 'react';
+import * as S from './styles';
 
 type Props = {
+  id: number;
   name: string;
-  path: string;
+  img: string;
   showBtn?: boolean;
 };
 
-export const CourseItem: FC<Props> = ({ name, path, showBtn }) => {
+export const CourseItem: FC<Props> = ({ name, img, showBtn, id }) => {
   return (
     <S.CourseCard>
-      <S.CourseImage src={path} alt="{name}" />
+      <S.CourseImage src={img} alt="{name}" />
       <S.CourseName>{name}</S.CourseName>
-      {showBtn && <S.FurtherBtn>Перейти →</S.FurtherBtn>}
+      {showBtn && <S.FurtherBtn to={`/course/${id}`}>Перейти →</S.FurtherBtn>}
     </S.CourseCard>
   );
-}
+};

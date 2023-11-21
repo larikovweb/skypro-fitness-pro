@@ -50,7 +50,7 @@ const Main: FC = () => {
           {CoursesArray.map((course) => {
             return (
               <Link key={course.id} to={`/course/${course.id}`}>
-                <CourseItem name={course.name} path={course.img} showBtn={false} />
+                <CourseItem {...course} showBtn={false} />
               </Link>
             );
           })}
