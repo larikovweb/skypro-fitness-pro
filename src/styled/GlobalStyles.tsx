@@ -1,7 +1,7 @@
 import { css, Global } from '@emotion/react';
 import { FC } from 'react';
 import { calcFluidFontSize, fontFace } from './mixins';
-import { StratosSkyeng } from '../assets/fonts/StratosSkyeng';
+import { RobotoBold, RobotoMedium, RobotoRegular } from '../assets/fonts/Roboto';
 import emotionReset from 'emotion-reset';
 import {
   $desktopWidth,
@@ -18,15 +18,16 @@ export const GlobalStyles: FC = () => (
   <Global
     styles={css`
       ${emotionReset}
-      ${fontFace('StratosSkyeng', StratosSkyeng, 400)}
+      ${fontFace('Roboto', RobotoRegular, 400)}
+      ${fontFace('Roboto', RobotoMedium, 500)}
+      ${fontFace('Roboto', RobotoBold, 700)}
 
       html {
         font-family: ${$mainFont};
         font-size: ${$mainFontSize};
         scroll-behavior: smooth;
         @media screen and (max-width: ${$desktopWidth}) {
-          /* font-size: ${calcFluidFontSize(11.0223, 21.3333, SCREEN_MD, SCREEN_LG)}; */
-          font-size: 16px;
+          font-size: ${calcFluidFontSize(11.0223, 21.3333, SCREEN_MD, SCREEN_LG)};
         }
         @media screen and (max-width: ${$tableWidth}) {
           font-size: ${calcFluidFontSize(9.9999, 20.6666, SCREEN_SM, SCREEN_MD)};
@@ -34,21 +35,6 @@ export const GlobalStyles: FC = () => (
         @media screen and (max-width: ${$phoneWidth}) {
           font-size: ${calcFluidFontSize(11.9465, 20.48, 280, SCREEN_SM)};
         }
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      a {
-        text-decoration: none;
-      }
-
-      input,
-      button {
-        outline: none;
-        border: none;
-        font-family: ${$mainFont};
       }
 
       body {
