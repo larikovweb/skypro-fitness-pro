@@ -12,7 +12,7 @@ const Application: FC = () => {
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
-          <Route element={<Layout />}>
+          <Route element={<Layout isAuth={auth} />}>
             {publicRoutes.map(({ path, component }) => (
               <Route key={path} path={path} element={component} />
             ))}

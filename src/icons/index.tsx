@@ -34,9 +34,9 @@ export const ArrowIco: FC = () => (
   </svg>
 );
 
-export const StrelaIco: FC = () => (
+export const StrelaIco: FC<{ stroke: string }> = ({ stroke }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="9" fill="none">
-    <path stroke="#000" strokeWidth="2" d="M12.355 1.033 6.678 6.711 1 1.033" />
+    <path stroke={stroke} strokeWidth="2" d="M12.355 1.033 6.678 6.711 1 1.033" />
   </svg>
 );
 

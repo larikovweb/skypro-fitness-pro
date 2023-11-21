@@ -5,11 +5,15 @@ import { Outlet } from 'react-router-dom';
 import { Footer } from './Footer';
 import { HelmetHead } from '../../components/seo/HelmetHead';
 
-export const Layout: FC = () => {
+type Props = {
+  isAuth: boolean;
+};
+
+export const Layout: FC<Props> = ({ isAuth }) => {
   return (
     <>
       <HelmetHead title="Общий заголовок" descr="Общее описание" />
-      <Header />
+      <Header isAuth={isAuth} />
       <Main>
         <Outlet />
       </Main>

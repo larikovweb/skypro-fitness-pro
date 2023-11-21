@@ -7,8 +7,11 @@ import { ProfileIco } from '../../icons/index';
 import { LogoIco } from '../../icons/index';
 import { MAIN_ROUTE } from '../../utils/consts';
 
-export const Header: FC = () => {
-  const isAuth = false;
+type Props = {
+  isAuth: boolean;
+};
+
+export const Header: FC<Props> = ({ isAuth }) => {
   const { pathname } = useLocation();
 
   return (
@@ -27,9 +30,9 @@ export const Header: FC = () => {
         ) : (
           <ProfileDiv>
             <ProfileIco />
-            <p>Сергей</p>
+            <p style={{ color: pathname === '/' ? '#ffffff' : '#140d40' }}>Сергей</p>
             <button style={{ background: 'transparent' }} onClick={() => alert('Привет!')}>
-              <StrelaIco />
+              <StrelaIco stroke={pathname === '/' ? '#ffffff' : '#140d40'} />
             </button>
           </ProfileDiv>
         )}
