@@ -1,147 +1,75 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Main = styled.div`
-  max-width: 1920px;
   background-color: #271a58;
-  padding-left: 140px;
-  padding-right: 140px;
-  padding-bottom: 60px;
-`;
-
-export const MainHeaderBlock = styled.div`
-  display: flex;
-  padding-top: 30px;
-  gap: 864px;
-`;
-
-export const SkyfintessLogo = styled.img`
-  width: 220px;
-  height: 35px;
-  color: #ffffff;
-`;
-
-export const LoginButton = styled.button`
-  display: inline-flex;
-  width: 77px;
-  height: 36px;
-  padding: 5px 16px 7px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 46px;
-  background: #140d40;
-  color: #ffffff;
-  text-align: center;
-  font-family: StratosSkyeng, sans-serif;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-
-  &:hover {
-    background: #2d1f79;
-  }
-
-  &:active {
-    background: #3b29a1;
-  }
+  padding-bottom: 3.75rem;
+  position: relative;
 `;
 
 export const TitleBlock = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 35px;
-  padding-right: 140px;
+  align-items: center;
 `;
 
 export const TitleBlockH3 = styled.h3`
-  color: var(--monochrome-white-20, #fff);
-  font-family: StratosSkyeng, sans-serif;
+  color: #fff;
   font-variant-numeric: lining-nums proportional-nums;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: 115%; /* 23px */
-  letter-spacing: -0.05px;
+  letter-spacing: -0.00313rem;
   opacity: 0.5;
-  margin-bottom: 13px;
+  margin-bottom: 1.06rem;
 `;
 
 export const TitleBlockH1 = styled.h1`
   color: #f4f4ff;
-  font-family: StratosSkyeng, sans-serif;
   font-variant-numeric: lining-nums proportional-nums;
-  font-size: 60px;
+  font-size: 3.75rem;
   font-style: normal;
   line-height: 91.5%; /* 54.9px */
-  letter-spacing: -1.169px;
-  width: 930px;
+  letter-spacing: -0.07306rem;
+  max-width: 51rem;
 `;
 
 export const SkyfintessSlogan = styled.img`
-  width: 220px;
-  height: 180px;
-  flex-shrink: 0;
-  position: absolute;
-  left: 1160px;
-  top: 120px;
+  width: 15.48rem;
+  height: 15.27rem;
 `;
 
 export const CenterBlock = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 37px;
-  margin-top: 52px;
-`;
-
-export const CourseCard = styled.div`
-  position: relative;
-`;
-
-export const CourseImage = styled.img`
-  width: 360px;
-  height: 480px;
-  flex-shrink: 0;
-  border-radius: 29.998px;
-  box-shadow: -10px 10px 15.99882px 0px rgba(0, 0, 0, 0.1),
-    10px -10px 16px 0px rgba(0, 0, 0, 0.1);
-  margin-bottom: 44px;
-  position: relative;
-`;
-
-export const CourseName = styled.h2`
-  width: 290px;
-  height: 120px;
-  color: #000;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-family: StratosSkyeng, sans-serif;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 110%; /* 39.6px */
-  letter-spacing: -0.5px;
-  position: absolute;
-  top: 30px;
-  left: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 2.31rem;
+  row-gap: 2.75rem;
+  margin-bottom: 2.12rem;
+  a {
+    transition: opacity 0.3s, transform 0.3s;
+    &:hover {
+      opacity: 0.85;
+      transform: scale(0.99);
+    }
+  }
 `;
 
 export const ScrollUpBtn = styled.button`
-  padding: 7px 24px 9px 24px;
+  cursor: pointer;
+  padding: 0.4375rem 1.5rem 0.5625rem 1.5rem;
   margin: 0 auto;
   display: block;
-  border-radius: 46px;
+  border-radius: 2.875rem;
   background: #c7e957;
-  weigth: 147px;
-  height: 48px;
+  height: 3rem;
   color: #000;
-  font-family: StratosSkyeng, sans-serif;
   text-align: center;
   font-variant-numeric: lining-nums proportional-nums;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-style: normal;
   line-height: 32px; /* 133.333% */
-  letter-spacing: -0.1px;
+  letter-spacing: -0.00625rem;
+  transition: background 0.3s;
 
   &:hover {
     background: #daf289;
