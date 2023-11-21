@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { hydrate } from 'react-dom';
 import Application from './app/Application';
-
+import './firebase';
 
 const rootElement = document.getElementById('root');
 if (rootElement) {

@@ -1,12 +1,7 @@
 import styled from '@emotion/styled';
 import { $mainFontColor } from '../../styled/variables';
-import * as React from 'react';
 
-export const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (props) => {
-  return <MyInput {...props} />;
-};
-
-const MyInput = styled.input`
+export const Input = styled.input`
   width: 100%;
   padding: 0 0 0.5rem;
   border-bottom: 0.0625rem solid #d0cece;
