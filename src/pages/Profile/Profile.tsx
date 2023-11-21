@@ -5,8 +5,9 @@ import { HelmetHead } from '../../components/seo/HelmetHead';
 import * as S from './styles';
 import { CourseImg } from '../../assets/img/courses';
 import { CourseItem } from '../../components/CourseItem/CourseItem';
-import { ModalNewPassword } from '../../components/modals/ModalNewPassword';
+import { ModalNewPassword } from '../../components/modals/ProfileModal/ModalNewPassword';
 import { ModalControl } from '../../components/modals/ModalControl';
+import { ModalNewLogin } from '../../components/modals/ProfileModal/ModalNewLogin';
 
 const user = 'user';
 const CoursesArray = [
@@ -46,9 +47,11 @@ const Profile: FC = () => {
             </div>
 
             <S.Edit>
-              <Button $primary type="submit" onClick={() => alert('no Link')}>
-                Редактировать логин
-              </Button>
+              <ModalControl modal={<ModalNewLogin />}>
+                <Button $primary type="submit">
+                  Редактировать логин
+                </Button>
+              </ModalControl>
               <ModalControl modal={<ModalNewPassword />}>
                 <Button $primary type="submit">
                   Редактировать пароль
