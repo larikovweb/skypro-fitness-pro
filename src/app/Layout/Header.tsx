@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { StrelaIco } from '../../icons/index';
 import { ProfileIco } from '../../icons/index';
 import { LogoIco } from '../../icons/index';
-import { MAIN_ROUTE } from '../../utils/consts';
+import { MAIN_ROUTE, PROFILE_ROUTE } from '../../utils/consts';
 
 type Props = {
   isAuth: boolean;
@@ -28,13 +28,13 @@ export const Header: FC<Props> = ({ isAuth }) => {
             <Button>Войти</Button>
           </Link>
         ) : (
-          <ProfileDiv>
+          <Profile to={PROFILE_ROUTE}>
             <ProfileIco />
             <p style={{ color: pathname === '/' ? '#ffffff' : '#140d40' }}>Сергей</p>
             <button style={{ background: 'transparent' }} onClick={() => alert('Привет!')}>
               <StrelaIco stroke={pathname === '/' ? '#ffffff' : '#140d40'} />
             </button>
-          </ProfileDiv>
+          </Profile>
         )}
       </MyContainer>
     </Wrapper>
@@ -73,7 +73,7 @@ const Button = styled.button`
   justify-content: center;
 `;
 
-const ProfileDiv = styled.div`
+const Profile = styled(Link)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
