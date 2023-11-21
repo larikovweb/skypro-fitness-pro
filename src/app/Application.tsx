@@ -6,7 +6,7 @@ import { publicRoutes, privateRoutes } from './routes';
 import { ProtectedRoute } from '../components/helpers/ProtectedRoute';
 const Application: FC = () => {
   //для доступа к profile и workout ставим true
-	const auth = false;
+	const auth = true;
 	return (
 		<>
 			<GlobalStyles />

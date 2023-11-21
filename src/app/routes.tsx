@@ -1,6 +1,6 @@
 import About from '../pages/About';
 import Main from '../pages/main/Main';
-import Profile from '../pages/Profile';
+import Profile from '../pages/profile/Profile';
 import Workout from '../pages/Workout';
 import NotFound from '../pages/NotFound';
 
