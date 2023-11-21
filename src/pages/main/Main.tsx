@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import * as S from './styles';
-import { CourseItem } from '../../components/courseCard/coursecard';
+import { CourseItem } from '../../components/CourseItem/CourseItem';
 import { CourseImg } from '../../assets/img/courses';
 import { SloganImg } from '../../assets/img/main';
 import { Link } from 'react-router-dom';

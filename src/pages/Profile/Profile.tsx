@@ -4,7 +4,7 @@ import { Button } from '../../components/form/Button';
 import { HelmetHead } from '../../components/seo/HelmetHead';
 import * as S from './styles';
 import { CourseImg } from '../../assets/img/courses';
-import { CourseItem } from '../../components/courseCard/coursecard';
+import { CourseItem } from '../../components/CourseItem/CourseItem';
 
 const Profile: FC = () => {
   const user = 'user';
