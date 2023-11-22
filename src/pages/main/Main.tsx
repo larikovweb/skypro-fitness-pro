@@ -1,12 +1,18 @@
 import { FC } from 'react';
+
 import * as S from './styles';
 import { CourseItem } from '../../components/CourseItem/CourseItem';
 import { CourseImg } from '../../assets/img/courses';
 import { SloganImg } from '../../assets/img/main';
 import { Link } from 'react-router-dom';
 import { Container } from '../../styled/components';
+import { useCourses } from '../../hooks/useCourses';
 
 const Main: FC = () => {
+  // Получение курсов
+  const { data, status, error } = useCourses();
+  console.log(data, status, error);
+
   const CoursesArray = [
     {
       name: 'Йога',

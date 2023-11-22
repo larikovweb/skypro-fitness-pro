@@ -1,13 +1,13 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { GlobalStyles } from '../styled/GlobalStyles';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { publicRoutes, privateRoutes } from './routes';
 import { ProtectedRoute } from '../components/helpers/ProtectedRoute';
-import { RootState, setupStore } from '../store/store';
-import { Provider, useSelector } from 'react-redux';
-import { isNull } from '@bunt/is';
+import { setupStore, useAppDispatch } from '../store/store';
+import { Provider } from 'react-redux';
 import { useAuth } from '../hooks/useAuth';
+import { fetchCourses } from '../services/courseService';
 const Application: FC = () => {
   const store = setupStore();
 
@@ -24,7 +24,14 @@ const Application: FC = () => {
 };
 
 const RouteSelect: FC = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCourses());
+  }, [dispatch]);
+
   const { isAuth } = useAuth();
+
   return (
     <Routes>
       <Route element={<Layout />}>

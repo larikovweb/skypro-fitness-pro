@@ -1,10 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import user from './slices/userSlice';
+import courses from './slices/courseSlice';
 import { authAPI } from '../services/authService';
+import { useDispatch } from 'react-redux';
 
 const rootReducer = combineReducers({
   [authAPI.reducerPath]: authAPI.reducer,
   user: user,
+  courses: courses,
 });
 
 export const setupStore = () => {
@@ -17,3 +20,4 @@ export const setupStore = () => {
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
 export type AppDispatch = AppStore['dispatch'];
+export const useAppDispatch = () => useDispatch<AppDispatch>();
