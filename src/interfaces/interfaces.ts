@@ -3,3 +3,28 @@ export interface IUser {
   token: string | null;
   id: string | null;
 }
+
+export interface IExercise {
+  name: string;
+  reps: number;
+}
+
+export interface IWorkout {
+  id: number;
+  title: string;
+  url: string;
+  exercises: IExercise[];
+}
+
+export interface ICourse {
+  id: number;
+  name: string;
+  description: string;
+  suitableFor: string[];
+  focus: string[];
+  workouts: IWorkout[];
+}
+
+export interface IFirebase {
+  courses: ICourse[];
+}
