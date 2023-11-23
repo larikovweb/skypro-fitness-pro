@@ -7,7 +7,7 @@ interface Props {
   $pending?: boolean;
 }
 
-export const createButton = styled.button<Props>`
+export const Button = styled.button<Props>`
   color: ${({ $primary }) => ($primary ? '#fff' : '#000')};
   background-color: ${({ $primary }) => ($primary ? '#580EA2' : '#fff')};
   width: ${({ $width }) => ($width ? `${$width}rem` : `17rem`)};
