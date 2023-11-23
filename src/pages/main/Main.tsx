@@ -2,44 +2,15 @@ import { FC } from 'react';
 
 import * as S from './styles';
 import { CourseItem } from '../../components/CourseItem/CourseItem';
-import { CourseImg } from '../../assets/img/courses';
 import { SloganImg } from '../../assets/img/main';
 import { Link } from 'react-router-dom';
 import { Container } from '../../styled/components';
 import { useCourses } from '../../hooks/useCourses';
+import { getDatabase, ref, set } from 'firebase/database';
+import { useAuth } from '../../hooks/useAuth';
 
 const Main: FC = () => {
-  // Получение курсов
-  const { data, status, error } = useCourses();
-  console.log(data, status, error);
-
-  const CoursesArray = [
-    {
-      name: 'Йога',
-      img: CourseImg.CourseImg1,
-      id: 1,
-    },
-    {
-      name: 'Стретчинг',
-      img: CourseImg.CourseImg2,
-      id: 2,
-    },
-    {
-      name: 'Танцевальный фитнес',
-      img: CourseImg.CourseImg3,
-      id: 3,
-    },
-    {
-      name: 'Степ-аэробика',
-      img: CourseImg.CourseImg4,
-      id: 4,
-    },
-    {
-      name: 'Бодифлекс',
-      img: CourseImg.CourseImg5,
-      id: 5,
-    },
-  ];
+  const { data: courses, status, error } = useCourses();
 
   return (
     <S.Main>
@@ -53,9 +24,12 @@ const Main: FC = () => {
         </S.TitleBlock>
 
         <S.CenterBlock>
-          {CoursesArray.map((course) => {
+          {courses.map((course) => {
             return (
-              <Link key={course.id} to={`/course/${course.id}`}>
+              <Link
+                // onClick={() => id && saveUserCourses(id.toString(), [course.id.toString()])}
+                key={course.id}
+                to={`/course/${course.id}`}>
                 <CourseItem {...course} showBtn={false} />
               </Link>
             );

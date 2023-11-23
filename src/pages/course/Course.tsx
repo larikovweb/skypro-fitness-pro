@@ -3,14 +3,24 @@ import * as S from './styles';
 import { FC } from 'react';
 import { Container } from '../../styled/components';
 import { PhoneSvgImage } from '../../icons';
+import { useParams } from 'react-router-dom';
+import { useCourses } from '../../hooks/useCourses';
+import { saveUserCourses } from '../../services/courseService';
+import { useAuth } from '../../hooks/useAuth';
 
 const Course: FC = () => {
+  const courseId = useParams().id;
+  const { id: userId } = useAuth();
+
+  const { data, status, error } = useCourses();
+  const course = data.find((course) => course.id.toString() === courseId);
+
   return (
     <S.CoursePage>
       <Container>
         <S.TitleBlock>
           <S.TitleBlockImage src={TitleImage} />
-          <S.TitleBlockH1>Йога</S.TitleBlockH1>
+          <S.TitleBlockH1>{course?.name}</S.TitleBlockH1>
         </S.TitleBlock>
 
         <S.TitleH2>Подойдет для вас, если:</S.TitleH2>
@@ -63,7 +73,11 @@ const Course: FC = () => {
               Оставьте заявку на пробное занятие, мы свяжемся с вами, поможем с выбором направления
               и тренера, с которым тренировки принесут здоровье и радость!
             </S.BookBlockH3>
-            <S.MyButton $primary>Записаться на тренировку</S.MyButton>
+            <S.MyButton
+              onClick={() => userId && courseId && saveUserCourses(userId, [courseId])}
+              $primary>
+              Записаться на тренировку
+            </S.MyButton>
           </S.BookBlockText>
           <S.CallImage>
             <PhoneSvgImage />
