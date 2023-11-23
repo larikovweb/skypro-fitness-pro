@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 import { FC } from 'react';
-import { Header } from './Header';
+import { Header } from './header/Header';
 import { Outlet } from 'react-router-dom';
-import { Footer } from './Footer';
 import { HelmetHead } from '../../components/seo/HelmetHead';
 
 export const Layout: FC = () => {
@@ -13,11 +12,11 @@ export const Layout: FC = () => {
       <Main>
         <Outlet />
       </Main>
-      <Footer />
     </>
   );
 };
 
 const Main = styled.main`
   display: block;
+  background-color: #fafafa;
 `;

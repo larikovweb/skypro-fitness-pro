@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
@@ -12,12 +12,19 @@
     "prebuild": "cpx \"./index.html\" \"./public\""
   },
   "dependencies": {
+    "@bunt/assert": "^0.29.19",
+    "@bunt/is": "^0.29.19",
+    "@bunt/type": "^0.29.19",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@reduxjs/toolkit": "^1.9.5",
     "emotion-reset": "^3.0.1",
+    "firebase": "^10.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.48.2",
+    "react-redux": "^8.1.3",
     "react-router-dom": "^6.10.0",
     "react-scripts": "^5.0.1",
     "react-snap": "^1.23.0"

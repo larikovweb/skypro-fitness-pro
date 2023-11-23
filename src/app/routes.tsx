@@ -1,8 +1,11 @@
-import About from '../pages/About';
-import Main from '../pages/Main';
+import Main from '../pages/main/Main';
 import NotFound from '../pages/NotFound';
 
-import { ABOUT_ROUTE, MAIN_ROUTE, NOT_FOUND_ROUTE } from '../utils/consts';
+import { COURSE_ROUTE, MAIN_ROUTE, NOT_FOUND_ROUTE, PROFILE_ROUTE } from '../utils/consts';
+import Course from '../pages/course/Course';
+import TestLogin from '../pages/TestLogin';
+import TestRegister from '../pages/TestRegister';
+import Profile from '../pages/profile/Profile';
 
 export type RouteType = {
   path: string;
@@ -11,8 +14,12 @@ export type RouteType = {
 
 export const publicRoutes: RouteType[] = [
   { path: MAIN_ROUTE, component: <Main /> },
-  { path: ABOUT_ROUTE, component: <About /> },
+  { path: `${COURSE_ROUTE}/:id`, component: <Course /> },
+  { path: '/test-login', component: <TestLogin /> },
+  { path: '/test-register', component: <TestRegister /> },
 
   //...
   { path: NOT_FOUND_ROUTE, component: <NotFound /> },
 ];
+
+export const privateRoutes: RouteType[] = [{ path: PROFILE_ROUTE, component: <Profile /> }];
