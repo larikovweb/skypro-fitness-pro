@@ -50,6 +50,7 @@ const Img = styled(Link)`
   }
 `;
 const Button = styled.button`
+  cursor: pointer;
   background: #140d40;
   color: whitesmoke;
   height: 1.5rem;
@@ -57,9 +58,13 @@ const Button = styled.button`
   border-radius: 2.8rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  padding: 1.25px 1.25px 1.25px 1.25px;
+  padding: 1.25px;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 0.7;
+  }
 `;
