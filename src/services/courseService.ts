@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getDatabase, ref, onValue, set, get } from 'firebase/database';
 import { ICourse } from '../interfaces/interfaces';
-import { useAuth } from '../hooks/useAuth';
 
 export const fetchCourses = createAsyncThunk<ICourse[]>('courses', () => {
   const db = getDatabase();

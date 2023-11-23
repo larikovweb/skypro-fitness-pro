@@ -1,12 +1,10 @@
 import { FC } from 'react';
 import { Input } from '../components/form/Input';
 import { Button } from '../components/form/Button';
-import { useDispatch } from 'react-redux';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
 import { InputField } from '../components/form/InputField';
 import { useNavigate } from 'react-router-dom';
-import { setUser } from '../store/slices/userSlice';
 
 type TSignUp = {
   email: string;
@@ -15,7 +13,6 @@ type TSignUp = {
 };
 
 const TestRegister: FC = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const {

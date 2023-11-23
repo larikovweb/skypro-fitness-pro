@@ -11,6 +11,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { useUserCourses } from '../../hooks/useUserCourses';
 import { useAppDispatch } from '../../store/store';
 import { fetchUserCourses } from '../../services/courseService';
+import { Loader } from '../../components/plug/Loader';
 
 const Profile: FC = () => {
   const { email, id } = useAuth();
@@ -21,6 +22,14 @@ const Profile: FC = () => {
   }, [dispatch, id]);
 
   const { data: courses, status, error } = useUserCourses();
+
+  if (status === 'loading') {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <>
