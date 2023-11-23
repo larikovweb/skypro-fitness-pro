@@ -3,15 +3,19 @@ import { useEffect } from 'react';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { IUser } from '../interfaces/interfaces';
 import { setUser, removeUser } from '../store/slices/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { MAIN_ROUTE } from '../utils/consts';
 
 export const useAuth = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { email, token, id } = useSelector((state: { user: IUser }) => state.user);
 
   const logout = async () => {
     const auth = getAuth();
     try {
       await signOut(auth);
+      navigate(MAIN_ROUTE);
     } catch (error) {
       console.error('Error signing out: ', error);
     }
