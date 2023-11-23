@@ -6,26 +6,26 @@ import { publicRoutes, privateRoutes } from './routes';
 import { ProtectedRoute } from '../components/helpers/ProtectedRoute';
 const Application: FC = () => {
   //для доступа к profile и workout ставим true
-	const auth = true;
-	return (
-		<>
-			<GlobalStyles />
-			<BrowserRouter>
-				<Routes>
-					<Route element={<Layout />}>
-						{publicRoutes.map(({ path, component }) => (
-							<Route key={path} path={path} element={component} />
-						))}
-						<Route element={<ProtectedRoute auth={auth} />}>
-							{privateRoutes.map(({ path, component }) => (
-								<Route key={path} path={path} element={component} />
-							))}
-						</Route>
-					</Route>
-				</Routes>
-			</BrowserRouter>
-		</>
-	);
+  const auth = true;
+  return (
+    <>
+      <GlobalStyles />
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout isAuth={auth} />}>
+            {publicRoutes.map(({ path, component }) => (
+              <Route key={path} path={path} element={component} />
+            ))}
+            <Route element={<ProtectedRoute auth={auth} />}>
+              {privateRoutes.map(({ path, component }) => (
+                <Route key={path} path={path} element={component} />
+              ))}
+            </Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 };
 
 export default Application;
