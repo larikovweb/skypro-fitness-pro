@@ -13,7 +13,7 @@ import { useAppDispatch } from '../../store/store';
 import { fetchUserCourses } from '../../services/courseService';
 
 const Profile: FC = () => {
-  const { email, id } = useAuth();
+  const { email, id, logout } = useAuth();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -48,6 +48,7 @@ const Profile: FC = () => {
                   Редактировать пароль
                 </Button>
               </ModalControl>
+              <Button onClick={logout}>Exit</Button>
             </S.Edit>
           </S.Info>
           <S.Title>Мои курсы</S.Title>

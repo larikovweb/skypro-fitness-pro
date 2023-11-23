@@ -1,25 +1,16 @@
 import styled from '@emotion/styled';
 import { FC } from 'react';
 import { Container } from '../../styled/components';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { StrelaIco } from '../../icons/index';
 import { ProfileIco } from '../../icons/index';
 import { LogoIco } from '../../icons/index';
 import { MAIN_ROUTE, PROFILE_ROUTE } from '../../utils/consts';
 import { useAuth } from '../../hooks/useAuth';
-import { useDispatch } from 'react-redux';
-import { removeUser } from '../../store/slices/userSlice';
 
 export const Header: FC = () => {
   const { pathname } = useLocation();
   const { isAuth, email } = useAuth();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const logout = () => {
-    dispatch(removeUser);
-    navigate('/');
-  };
 
   return (
     <Wrapper
@@ -38,7 +29,7 @@ export const Header: FC = () => {
           <Profile to={PROFILE_ROUTE}>
             <ProfileIco />
             <p style={{ color: pathname === '/' ? '#ffffff' : '#140d40' }}>{email}</p>
-            <button style={{ background: 'transparent' }} onClick={logout}>
+            <button style={{ background: 'transparent' }}>
               <StrelaIco stroke={pathname === '/' ? '#ffffff' : '#140d40'} />
             </button>
           </Profile>
