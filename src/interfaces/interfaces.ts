@@ -27,4 +27,9 @@ export interface ICourse {
 
 export interface IFirebase {
   courses: ICourse[];
+  userData: IUserData;
+}
+
+export interface IUserData {
+  courses: ICourse[] | [];
 }

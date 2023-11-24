@@ -3,25 +3,27 @@ import { Container } from '../../styled/components';
 import { Button } from '../../components/form/Button';
 import { HelmetHead } from '../../components/seo/HelmetHead';
 import * as S from './styles';
-import { CourseItem } from '../../components/CourseItem/CourseItem';
 import { ModalNewPassword } from '../../components/modals/ProfileModal/ModalNewPassword';
 import { ModalControl } from '../../components/modals/ModalControl';
 import { ModalNewLogin } from '../../components/modals/ProfileModal/ModalNewLogin';
 import { useAuth } from '../../hooks/useAuth';
-import { useUserCourses } from '../../hooks/useUserCourses';
 import { useAppDispatch } from '../../store/store';
-import { fetchUserCourses } from '../../services/courseService';
 import { Loader } from '../../components/plug/Loader';
+import { fetchUserData } from '../../services/userDataService';
+import { useUserData } from '../../hooks/useUserData';
+import { CourseItem } from '../../components/CourseItem/CourseItem';
 
 const Profile: FC = () => {
   const { email, id } = useAuth();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    id && dispatch(fetchUserCourses(id));
+    id && dispatch(fetchUserData(id));
   }, [dispatch, id]);
 
-  const { data: courses, status, error } = useUserCourses();
+  const { courses, status, error } = useUserData();
+
+  console.log(courses);
 
   if (status === 'loading') {
     return <Loader />;
