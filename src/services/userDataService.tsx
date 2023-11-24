@@ -46,7 +46,7 @@ export const saveExerciseReps = async (
     }
     return {
       ...item,
-      ...newExerciseData[i],
+      myReps: Number(newExerciseData[i].myReps),
     };
   });
 
