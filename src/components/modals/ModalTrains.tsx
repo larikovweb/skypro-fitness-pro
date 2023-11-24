@@ -2,8 +2,9 @@ import styled from '@emotion/styled';
 import { FC } from 'react';
 import { IWorkout } from '../../interfaces/interfaces';
 import { Link } from 'react-router-dom';
-import { $darkColor } from '../../styled/variables';
 import { WORKOUT_ROUTE } from '../../utils/consts';
+import { isNumber } from '@bunt/is';
+import { IconCompleted } from '../../icons';
 
 type Props = {
   courseId: number | string;
@@ -18,8 +19,17 @@ export const ModalTrains: FC<Props> = ({ workouts, courseId }) => {
         {workouts.map((workout, index) => {
           const name = workout.title.split(' / ')[0];
           const descr = workout.title.split(' / ').slice(1).join(' / ');
+
+          const isCompleted = isNumber(workout.exercises[0].myReps);
           return (
-            <Train id={workout.id} courseId={courseId} descr={descr} name={name} key={index} />
+            <Train
+              id={workout.id}
+              isCompleted={isCompleted}
+              courseId={courseId}
+              descr={descr}
+              name={name}
+              key={index}
+            />
           );
         })}
       </Scroll>
@@ -32,9 +42,11 @@ const Train: FC<{
   name: string;
   descr: string;
   courseId: number | string;
-}> = ({ id, name, descr, courseId }) => {
+  isCompleted: boolean;
+}> = ({ id, name, descr, courseId, isCompleted }) => {
   return (
-    <TrainWrapper to={`${WORKOUT_ROUTE}/${courseId}/${id}`}>
+    <TrainWrapper to={`${WORKOUT_ROUTE}/${courseId}/${id}`} $completed={isCompleted}>
+      {isCompleted && <IconCompleted />}
       <b>{name}</b>
       {descr && <span>{descr}</span>}
     </TrainWrapper>
@@ -105,17 +117,19 @@ const Scroll = styled.div`
   }
 `;
 
-const TrainWrapper = styled(Link)`
+const TrainWrapper = styled(Link)<{ $completed: boolean }>`
   position: relative;
   width: 18.375rem;
   padding: 0.75rem 1.75rem 1rem;
   border-radius: 1.625rem;
-  border: 0.0625rem solid #000;
+  border-width: 0.0625rem;
+  border-style: solid;
+  border-color: ${({ $completed }) => ($completed ? '#06B16E' : '#000')};
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  color: ${$darkColor};
+  color: ${({ $completed }) => ($completed ? '#06B16E' : '#000')};
   transition: opacity 0.3s, transform 0.3s;
   &:hover {
     opacity: 0.75;
@@ -135,5 +149,13 @@ const TrainWrapper = styled(Link)`
     line-height: 1.125rem;
     letter-spacing: 0.001rem;
     margin-top: 0.38rem;
+  }
+  svg {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 1.6875rem;
+    height: 1.5625rem;
+    stroke: #06b16e;
   }
 `;
