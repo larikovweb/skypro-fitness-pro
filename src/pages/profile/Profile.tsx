@@ -32,6 +32,7 @@ const Profile: FC = () => {
   if (error) {
     return <div>{error}</div>;
   }
+  console.log(courses);
 
   return (
     <>

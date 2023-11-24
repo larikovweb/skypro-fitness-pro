@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import * as S from './styles';
-// import { CourseImg } from '../../assets/img/courses';
 import { ICourse } from '../../interfaces/interfaces';
+import { ModalControl } from '../modals/ModalControl';
+import { ModalTrains } from '../modals/ModalTrains';
 
 type Props = {
   showBtn?: boolean;
@@ -9,12 +10,16 @@ type Props = {
 
 const publicPath = process.env.PUBLIC_URL;
 
-export const CourseItem: FC<Props> = ({ name, showBtn, id, img }) => {
+export const CourseItem: FC<Props> = ({ id, name, showBtn, img, workouts }) => {
   return (
     <S.CourseCard>
       <S.CourseImage src={`${publicPath}${img}`} alt={name} />
       <S.CourseName>{name}</S.CourseName>
-      {showBtn && <S.FurtherBtn to={`/course/${id}`}>Перейти →</S.FurtherBtn>}
+      {showBtn && (
+        <ModalControl modal={<ModalTrains courseId={id} workouts={workouts} />}>
+          <S.FurtherBtn>Перейти →</S.FurtherBtn>
+        </ModalControl>
+      )}
     </S.CourseCard>
   );
 };
