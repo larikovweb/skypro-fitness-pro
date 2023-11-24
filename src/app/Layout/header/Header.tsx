@@ -1,18 +1,15 @@
 import styled from '@emotion/styled';
 import { FC } from 'react';
-import { Container } from '../../styled/components';
+import { Container } from '../../../styled/components';
 import { Link, useLocation } from 'react-router-dom';
-import { StrelaIco } from '../../icons/index';
-import { ProfileIco } from '../../icons/index';
-import { LogoIco } from '../../icons/index';
-import { MAIN_ROUTE, PROFILE_ROUTE } from '../../utils/consts';
+import { LogoIco } from '../../../icons/index';
+import { MAIN_ROUTE } from '../../../utils/consts';
+import { useAuth } from '../../../hooks/useAuth';
+import { ProfileMenu } from './ProfileMenu';
 
-type Props = {
-  isAuth: boolean;
-};
-
-export const Header: FC<Props> = ({ isAuth }) => {
+export const Header: FC = () => {
   const { pathname } = useLocation();
+  const { isAuth } = useAuth();
 
   return (
     <Wrapper
@@ -24,17 +21,11 @@ export const Header: FC<Props> = ({ isAuth }) => {
           <LogoIco fillColor={pathname === '/' ? '#ffffff' : '#140d40'} />
         </Img>
         {!isAuth ? (
-          <Link to="/login" onClick={() => alert('Вы авторизованы!')}>
+          <Link to="/login">
             <Button>Войти</Button>
           </Link>
         ) : (
-          <Profile to={PROFILE_ROUTE}>
-            <ProfileIco />
-            <p style={{ color: pathname === '/' ? '#ffffff' : '#140d40' }}>Сергей</p>
-            <button style={{ background: 'transparent' }} onClick={() => alert('Привет!')}>
-              <StrelaIco stroke={pathname === '/' ? '#ffffff' : '#140d40'} />
-            </button>
-          </Profile>
+          <ProfileMenu />
         )}
       </MyContainer>
     </Wrapper>
@@ -59,6 +50,7 @@ const Img = styled(Link)`
   }
 `;
 const Button = styled.button`
+  cursor: pointer;
   background: #140d40;
   color: whitesmoke;
   height: 1.5rem;
@@ -66,19 +58,13 @@ const Button = styled.button`
   border-radius: 2.8rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  padding: 1.25px 1.25px 1.25px 1.25px;
+  padding: 1.25px;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
-`;
-
-const Profile = styled(Link)`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  gap: 0.75rem;
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 0.7;
+  }
 `;

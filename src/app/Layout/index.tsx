@@ -1,18 +1,14 @@
 import styled from '@emotion/styled';
 import { FC } from 'react';
-import { Header } from './Header';
+import { Header } from './header/Header';
 import { Outlet } from 'react-router-dom';
 import { HelmetHead } from '../../components/seo/HelmetHead';
 
-type Props = {
-  isAuth: boolean;
-};
-
-export const Layout: FC<Props> = ({ isAuth }) => {
+export const Layout: FC = () => {
   return (
     <>
       <HelmetHead title="Общий заголовок" descr="Общее описание" />
-      <Header isAuth={isAuth} />
+      <Header />
       <Main>
         <Outlet />
       </Main>
