@@ -12,6 +12,8 @@ import { Loader } from '../../components/plug/Loader';
 import { fetchUserData } from '../../services/userDataService';
 import { useUserData } from '../../hooks/useUserData';
 import { CourseItem } from '../../components/CourseItem/CourseItem';
+import { Link } from 'react-router-dom';
+import { MAIN_ROUTE } from '../../utils/consts';
 
 const Profile: FC = () => {
   const { email, id } = useAuth();
@@ -22,8 +24,6 @@ const Profile: FC = () => {
   }, [dispatch, id]);
 
   const { courses, status, error } = useUserData();
-
-  console.log(courses);
 
   if (status === 'loading') {
     return <Loader />;
@@ -64,9 +64,16 @@ const Profile: FC = () => {
           <S.Title>Мои курсы</S.Title>
 
           <S.Courses>
-            {courses.map((course) => (
-              <CourseItem key={course.id} showBtn {...course} />
-            ))}
+            {courses.length ? (
+              courses.map((course) => <CourseItem key={course.id} showBtn {...course} />)
+            ) : (
+              <S.Empty>
+                <b>Пока нет курсов</b>
+                <Link to={MAIN_ROUTE}>
+                  <Button $primary>Перейти к курсам</Button>
+                </Link>
+              </S.Empty>
+            )}
           </S.Courses>
         </S.CardUser>
       </Container>

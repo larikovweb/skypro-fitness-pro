@@ -19,6 +19,7 @@ export interface IWorkout {
 export interface ICourse {
   id: number;
   name: string;
+  img: string;
   description: string;
   suitableFor: string[];
   focus: string[];
