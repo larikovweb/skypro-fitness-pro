@@ -1,17 +1,26 @@
 import { FC } from 'react';
-import { Result, Block, Label } from './S.ProgressBar';
+import * as S from './S.ProgressBar';
 
-type Props = {
+type Prop = {
   completed?: number;
   bgcolor?: string;
+  text?:string;
 };
 
-export const ProgressBar: FC<Props> = ({ completed, bgcolor }) => {
+export const ProgressBar: FC<Prop> = ({ completed, bgcolor,text }) => {
   return (
-    <Block bgcolor={bgcolor}>
-      <Result progress={completed} bgcolor={bgcolor}>
-        <Label>{completed}%</Label>
-      </Result>
-    </Block>
+
+
+    
+    <S.TextBlock>
+              <S.TextBlockP>{text}</S.TextBlockP>
+    <S.Block bgcolor={bgcolor}>
+      <S.Result progress={completed} bgcolor={bgcolor}>
+        <S.Label>{completed}%</S.Label>
+      </S.Result>
+    </S.Block>
+    </S.TextBlock>
   );
 };
+
+

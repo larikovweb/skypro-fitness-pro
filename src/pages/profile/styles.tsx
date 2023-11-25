@@ -34,7 +34,31 @@ export const Edit = styled.div`
 `;
 
 export const Courses = styled.div`
+  position: relative;
+  min-height: 40vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
+`;
+
+export const Empty = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0.125rem solid #f0f0f0;
+  padding: 2rem;
+  border-radius: 1rem;
+  b {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 2rem;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 `;

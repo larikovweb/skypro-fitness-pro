@@ -19,6 +19,7 @@ export interface IWorkout {
 export interface ICourse {
   id: number;
   name: string;
+  img: string;
   description: string;
   suitableFor: string[];
   focus: string[];
@@ -27,4 +28,9 @@ export interface ICourse {
 
 export interface IFirebase {
   courses: ICourse[];
+  userData: IUserData;
+}
+
+export interface IUserData {
+  courses: ICourse[] | [];
 }
