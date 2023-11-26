@@ -9,10 +9,10 @@ import {
   WORKOUT_ROUTE,
 } from '../utils/consts';
 import Course from '../pages/course/Course';
-import TestLogin from '../pages/TestLogin';
-import TestRegister from '../pages/TestRegister';
+import TestLogin from '../pages/auth/TestLogin';
+import TestRegister from '../pages/auth/TestRegister';
 import Profile from '../pages/profile/Profile';
-import { TestWorkout } from '../pages/TestWorkout';
+import { TestWorkout } from '../pages/auth/TestWorkout';
 
 export type RouteType = {
   path: string;
