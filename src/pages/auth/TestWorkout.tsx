@@ -1,15 +1,15 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
-import { useUserData } from '../hooks/useUserData';
-import { Loader } from '../components/plug/Loader';
-import { Container } from '../styled/components';
+import { useUserData } from '../../hooks/useUserData';
+import { Loader } from '../../components/plug/Loader';
+import { Container } from '../../styled/components';
 import { useForm } from 'react-hook-form';
-import { IExercise } from '../interfaces/interfaces';
-import { Input } from '../components/form/Input';
-import { InputField } from '../components/form/InputField';
-import { fetchUserData, saveExerciseReps } from '../services/userDataService';
-import { useAuth } from '../hooks/useAuth';
-import { useAppDispatch } from '../store/store';
+import { IExercise } from '../../interfaces/interfaces';
+import { Input } from '../../components/form/Input';
+import { InputField } from '../../components/form/InputField';
+import { fetchUserData, saveExerciseReps } from '../../services/userDataService';
+import { useAuth } from '../../hooks/useAuth';
+import { useAppDispatch } from '../../store/store';
 
 type Form = {
   [key: string]: IExercise;
