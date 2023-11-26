@@ -8,6 +8,7 @@ import { setupStore, useAppDispatch } from '../store/store';
 import { Provider } from 'react-redux';
 import { useAuth } from '../hooks/useAuth';
 import { fetchCourses } from '../services/courseService';
+import { fetchUserData } from '../services/userDataService';
 const Application: FC = () => {
   const store = setupStore();
 
@@ -24,13 +25,13 @@ const Application: FC = () => {
 };
 
 const RouteSelect: FC = () => {
+  const { isAuth, id } = useAuth();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchCourses());
-  }, [dispatch]);
-
-  const { isAuth } = useAuth();
+    id && dispatch(fetchUserData(id));
+  }, [dispatch, id]);
 
   return (
     <Routes>

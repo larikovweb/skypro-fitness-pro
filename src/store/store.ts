@@ -1,19 +1,19 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import user from './slices/userSlice';
 import courses from './slices/courseSlice';
-import { authAPI } from '../services/authService';
+import userData from './slices/userDataSlice';
 import { useDispatch } from 'react-redux';
 
 const rootReducer = combineReducers({
-  [authAPI.reducerPath]: authAPI.reducer,
   user: user,
   courses: courses,
+  userData: userData,
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authAPI.middleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
   });
 };
 

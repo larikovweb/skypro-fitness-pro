@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { FC } from 'react';
-import { Header } from './Header';
+import { Header } from './header/Header';
 import { Outlet } from 'react-router-dom';
 import { HelmetHead } from '../../components/seo/HelmetHead';
 
