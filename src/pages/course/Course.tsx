@@ -1,4 +1,4 @@
-import { TitleImage } from '../../assets/img/coursepage';
+import { TitleImages } from '../../assets/img/coursepage';
 import * as S from './styles';
 import { FC } from 'react';
 import { Container } from '../../styled/components';
@@ -25,9 +25,15 @@ const Course: FC = () => {
     return <div>{error}</div>;
   }
 
-  console.log(course);
   const suitableForArray = course?.suitableFor;
   const focusArray = course?.focus;
+  const images: Record<string, string> = {
+    '1': TitleImages.TitleImage1,
+    '2': TitleImages.TitleImage2,
+    '3': TitleImages.TitleImage3,
+    '4': TitleImages.TitleImage4,
+    '5': TitleImages.TitleImage5,
+  };
 
   return (
     <>
@@ -37,8 +43,10 @@ const Course: FC = () => {
       />
       <S.CoursePage>
         <Container>
+
           <S.TitleBlock>
-            <S.TitleBlockImage src={TitleImage} />
+            {/* <S.TitleBlockImage src={images[course?.id]} /> */}
+            <S.TitleBlockImage src={images[2]} />
             <S.TitleBlockH1>{course?.name}</S.TitleBlockH1>
           </S.TitleBlock>
 
