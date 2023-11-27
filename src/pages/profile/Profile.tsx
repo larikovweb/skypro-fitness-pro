@@ -1,7 +1,6 @@
 import { FC, useEffect } from 'react';
 import { Container } from '../../styled/components';
 import { Button } from '../../components/form/Button';
-import { ProgressBar } from '../../components/ProgressBar/ProgressBar';
 import { HelmetHead } from '../../components/seo/HelmetHead';
 import * as S from './styles';
 import { ModalNewPassword } from '../../components/modals/ProfileModal/ModalNewPassword';
@@ -15,7 +14,7 @@ import { useUserData } from '../../hooks/useUserData';
 import { CourseItem } from '../../components/CourseItem/CourseItem';
 import { Link } from 'react-router-dom';
 import { MAIN_ROUTE } from '../../utils/consts';
-import * as Styled from './S.CursesPayPage';
+
 
 const Profile: FC = () => {
   const { email, id } = useAuth();
@@ -34,13 +33,7 @@ const Profile: FC = () => {
   if (error) {
     return <div>{error}</div>;
   }
-  /* Полченные данные прогресса */
-  const progressData = [
-    { bgcolor: '#565EEF', completed: 52,text:'Наклоны вперед' },
-    { bgcolor: '#FF6D00', completed: 45 ,text:'Наклоны назад'},
-    { bgcolor: '#9A48F1', completed: 100 , text:'Поднятие ног, согнутых в коленях'},
-  ];
-  const titleProgress = 'Мой прогресс по тренировке 2:';
+
   return (
     <>
       <HelmetHead
@@ -49,23 +42,6 @@ const Profile: FC = () => {
       />
       <Container>
         <S.CardUser>
-          <Styled.ProgressBlock>
-            <Styled.Title> {titleProgress}</Styled.Title>
-            <Styled.ProgresMain>
-            <Styled.TextBlock>
-              <Styled.TextBlockP>Наклоны вперед</Styled.TextBlockP>
-              <Styled.TextBlockP> Наклоны назад</Styled.TextBlockP>
-              <Styled.TextBlockP> Поднятие ног, согнутых в коленях</Styled.TextBlockP>
-            </Styled.TextBlock>
-            <Styled.ProgressBlockMain>
-              {progressData.map((item, idx) => (
-                <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} text={item.text}/>
-                
-              ))}
-            </Styled.ProgressBlockMain>
-            </Styled.ProgresMain>
-          </Styled.ProgressBlock>
-
           <S.Info>
             <S.Title>Мой профиль</S.Title>
             <div>
