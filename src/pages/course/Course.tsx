@@ -27,6 +27,7 @@ const Course: FC = () => {
 
   console.log(course);
   const suitableForArray = course?.suitableFor;
+  const focusArray = course?.focus;
 
   return (
     <>
@@ -61,12 +62,13 @@ const Course: FC = () => {
           
           <S.TitleH2>Направления:</S.TitleH2>
           <S.PracticeList>
-            <S.PracticeListItem key="1">Йога для новичков</S.PracticeListItem>
-            <S.PracticeListItem key="2">Классическая йога</S.PracticeListItem>
-            <S.PracticeListItem key="3">Йогатерапия</S.PracticeListItem>
-            <S.PracticeListItem key="4">Кундалини-йога</S.PracticeListItem>
-            <S.PracticeListItem key="5">Хатха-йога</S.PracticeListItem>
-            <S.PracticeListItem key="6">Аштанга-йога</S.PracticeListItem>
+            {
+              focusArray?.map((value, index) => {
+                return (
+                  <S.PracticeListItem key={index}>{value}</S.PracticeListItem>
+                )
+              })
+            }
           </S.PracticeList>
 
           <S.BenefitText>
