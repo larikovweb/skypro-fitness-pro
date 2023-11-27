@@ -15,7 +15,7 @@ export const useUserData = () => {
   }
 
   return {
-    courses: data?.courses,
+    courses: data.courses,
     status,
     error,
   };

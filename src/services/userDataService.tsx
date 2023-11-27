@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getDatabase, ref, onValue, get, set } from 'firebase/database';
-import { ICourse, IUserData } from '../interfaces/interfaces';
+import { getDatabase, ref, onValue, set, get } from 'firebase/database';
+import { ICourse, IExercise, IUserData } from '../interfaces/interfaces';
+import { isUndefined } from '@bunt/is';
 
 export const fetchUserData = createAsyncThunk<IUserData, string>('userData', (id) => {
   const db = getDatabase();
@@ -20,16 +21,34 @@ export const fetchUserData = createAsyncThunk<IUserData, string>('userData', (id
 
 export const saveCourses = async (userId: string, course: ICourse) => {
   const db = getDatabase();
-  const userDataRef = ref(db, `userData/${userId}/courses`);
+  const userDataRef = ref(db, `userData/${userId}/courses/${course.id}`);
 
-  // Получить текущий список курсов пользователя
-  const snapshot = await get(userDataRef);
-  const currentCourses = snapshot.val() || [];
+  set(userDataRef, course);
+};
 
-  // Соединить текущий список курсов пользователя с новыми курсами,
-  // убедиться, что идентификаторы курсов уникальны
-  const newCourses = Array.from(new Set([...currentCourses, course]));
+export const saveExerciseReps = async (
+  userId: string,
+  courseId: string,
+  workoutId: string,
+  newExerciseData: { [key: string]: IExercise },
+) => {
+  const db = getDatabase();
+  const exerciseDataRef = ref(
+    db,
+    `userData/${userId}/courses/${courseId}/workouts/${workoutId}/exercises`,
+  );
 
-  // Записать обновленный список курсов пользователя в базу данных
-  set(userDataRef, newCourses);
+  const snapshot = await get(exerciseDataRef);
+  const existingExerciseData = snapshot.val() || [];
+  const mergeData = existingExerciseData.map((item: IExercise, i: number) => {
+    if (isUndefined(newExerciseData)) {
+      return;
+    }
+    return {
+      ...item,
+      myReps: Number(newExerciseData[i].myReps),
+    };
+  });
+
+  return set(exerciseDataRef, mergeData);
 };

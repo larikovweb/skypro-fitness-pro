@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchUserData } from '../../services/userDataService';
 import { IUserData } from '../../interfaces/interfaces';
+import { isUndefined } from '@bunt/is';
 
 export type UserDataState = {
   data: IUserData;
@@ -27,7 +28,21 @@ const userDataSlice = createSlice({
       })
       .addCase(fetchUserData.fulfilled, (state, action: PayloadAction<IUserData>) => {
         state.status = 'succeeded';
-        state.data = action.payload;
+        if (action.payload) {
+          if (Array.isArray(action.payload.courses)) {
+            state.data = {
+              ...action.payload,
+              courses: action.payload.courses.filter((course) => !isUndefined(course)),
+            };
+          } else {
+            // Handle case where action.payload.courses is not an array
+            console.error('action.payload.courses is not an array');
+          }
+        } else {
+          state.data = {
+            courses: [],
+          };
+        }
       })
       .addCase(fetchUserData.rejected, (state, action) => {
         state.status = 'failed';
