@@ -70,7 +70,6 @@ export const TestWorkout: FC = () => {
       {JSON.stringify(workout)}
       <S.ProgressBlock>
         <S.Title> {workout?.title} </S.Title>
-
         {workout?.exercises.map((item, i) => (
           <>
             <S.ProgressMain>

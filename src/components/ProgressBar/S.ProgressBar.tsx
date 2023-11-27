@@ -10,7 +10,6 @@ export const ProgressBlock = styled.div`
   background: #f2f2f2;
   flex-direction: column;
 `;
-
 export const Title = styled.p`
   padding: 2.5rem 5rem;
   text-align: center;

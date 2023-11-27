@@ -16,7 +16,6 @@ export const ProgressBar: FC<Prop> = ({ completed, bgcolor, max_completed }) => 
     max_completed !== undefined
   ) {
     const result = Math.round((completed / max_completed) * 100);
-
     return (
       <S.Block bgcolor={bgcolor}>
         <S.Result progress={result} bgcolor={bgcolor}>
