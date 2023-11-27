@@ -16,7 +16,6 @@ const Course: FC = () => {
 
   const { data, status, error } = useCourses();
   const course = data.find((course) => course.id.toString() === courseId);
-  console.log(course?.description);
 
   if (status === 'loading') {
     return <Loader />;
@@ -25,6 +24,9 @@ const Course: FC = () => {
   if (error) {
     return <div>{error}</div>;
   }
+
+  console.log(course);
+  const suitableForArray = course?.suitableFor;
 
   return (
     <>
@@ -41,32 +43,22 @@ const Course: FC = () => {
 
           <S.TitleH2>Подойдет для вас, если:</S.TitleH2>
           <S.NumberedList>
-            <S.NumberedListItem>
-              <S.Circle>
-                <S.CircleNumber>1</S.CircleNumber>
-              </S.Circle>
-              <S.DescriptionText>
-                Давно хотели попробовать йогу, но не решались начать.
-              </S.DescriptionText>
+            {
+              suitableForArray?.map((value, index) => {
+                return (
+                  <S.NumberedListItem key={index}>
+                    <S.Circle>
+                      <S.CircleNumber>{index + 1}</S.CircleNumber>
+                    </S.Circle>
+                    <S.DescriptionText>
+                      {value}
+                    </S.DescriptionText>
             </S.NumberedListItem>
-
-            <S.NumberedListItem>
-              <S.Circle>
-                <S.CircleNumber>2</S.CircleNumber>
-              </S.Circle>
-              <S.DescriptionText>
-                Хотите укрепить позвоночник, избавиться от болей в спине и суставах.
-              </S.DescriptionText>
-            </S.NumberedListItem>
-
-            <S.NumberedListItem>
-              <S.Circle>
-                <S.CircleNumber>3</S.CircleNumber>
-              </S.Circle>
-              <S.DescriptionText>Ищете активность, полезную для тела и души.</S.DescriptionText>
-            </S.NumberedListItem>
+                )
+              })
+            }
           </S.NumberedList>
-
+          
           <S.TitleH2>Направления:</S.TitleH2>
           <S.PracticeList>
             <S.PracticeListItem key="1">Йога для новичков</S.PracticeListItem>
@@ -78,9 +70,7 @@ const Course: FC = () => {
           </S.PracticeList>
 
           <S.BenefitText>
-            Благодаря комплексному воздействию упражнений происходит проработка всех групп мышц,
-            тренировка суставов, улучшается циркуляция крови. Кроме того, упражнения дарят отличное
-            настроение, заряжают бодростью и помогают противостоять стрессам.
+            {course?.description}
           </S.BenefitText>
 
           <S.BookBlock>
