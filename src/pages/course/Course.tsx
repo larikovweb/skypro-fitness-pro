@@ -16,6 +16,7 @@ const Course: FC = () => {
 
   const { data, status, error } = useCourses();
   const course = data.find((course) => course.id.toString() === courseId);
+  console.log(course?.description);
 
   if (status === 'loading') {
     return <Loader />;
