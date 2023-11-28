@@ -19,7 +19,7 @@ export const ModalNewLogin: FC<Props> = () => {
     logout('/test-login');
     navigate('/test-login');
   };
-  const useChangeEmail = (e: any) => {
+  const useChangeEmail = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputRef.current.value) {
       const auth = getAuth();
