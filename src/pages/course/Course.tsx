@@ -3,7 +3,7 @@ import * as S from './styles';
 import { FC } from 'react';
 import { Container } from '../../styled/components';
 import { PhoneSvgImage } from '../../icons';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useCourses } from '../../hooks/useCourses';
 import { useAuth } from '../../hooks/useAuth';
 import { HelmetHead } from '../../components/seo/HelmetHead';
@@ -14,6 +14,7 @@ import { ICourse } from '../../interfaces/interfaces';
 const Course: FC = () => {
   const courseId = useParams().id;
   const { id: userId } = useAuth();
+  const navigate = useNavigate();
 
   const { data, status, error } = useCourses();
   const course = data.find((course) => course.id.toString() === courseId) as ICourse;
@@ -34,6 +35,15 @@ const Course: FC = () => {
     '3': TitleImages.TitleImage3,
     '4': TitleImages.TitleImage4,
     '5': TitleImages.TitleImage5,
+  };
+
+  const buyCourse = () => {
+    if (userId && course) {
+      saveCourses(userId, course);
+      navigate(`/profile`);
+    } else {
+      navigate(`/register`);
+    }
   };
 
   return (
@@ -79,7 +89,7 @@ const Course: FC = () => {
                 Оставьте заявку на пробное занятие, мы свяжемся с вами, поможем с выбором
                 направления и тренера, с которым тренировки принесут здоровье и радость!
               </S.BookBlockH3>
-              <S.MyButton onClick={() => userId && course && saveCourses(userId, course)} $primary>
+              <S.MyButton onClick={buyCourse} $primary>
                 Записаться на тренировку
               </S.MyButton>
             </S.BookBlockText>
