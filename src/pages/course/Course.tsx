@@ -9,13 +9,14 @@ import { useAuth } from '../../hooks/useAuth';
 import { HelmetHead } from '../../components/seo/HelmetHead';
 import { Loader } from '../../components/plug/Loader';
 import { saveCourses } from '../../services/userDataService';
+import { ICourse } from '../../interfaces/interfaces';
 
 const Course: FC = () => {
   const courseId = useParams().id;
   const { id: userId } = useAuth();
 
   const { data, status, error } = useCourses();
-  const course = data.find((course) => course.id.toString() === courseId);
+  const course = data.find((course) => course.id.toString() === courseId) as ICourse;
 
   if (status === 'loading') {
     return <Loader />;
@@ -43,45 +44,34 @@ const Course: FC = () => {
       />
       <S.CoursePage>
         <Container>
-
           <S.TitleBlock>
-            {/* <S.TitleBlockImage src={images[course?.id]} /> */}
-            <S.TitleBlockImage src={images[2]} />
+            <S.TitleBlockImage src={images[course?.id.toString()]} />
+            {/* <S.TitleBlockImage src={images[2]} /> */}
             <S.TitleBlockH1>{course?.name}</S.TitleBlockH1>
           </S.TitleBlock>
 
           <S.TitleH2>Подойдет для вас, если:</S.TitleH2>
           <S.NumberedList>
-            {
-              suitableForArray?.map((value, index) => {
-                return (
-                  <S.NumberedListItem key={index}>
-                    <S.Circle>
-                      <S.CircleNumber>{index + 1}</S.CircleNumber>
-                    </S.Circle>
-                    <S.DescriptionText>
-                      {value}
-                    </S.DescriptionText>
-            </S.NumberedListItem>
-                )
-              })
-            }
+            {suitableForArray?.map((value, index) => {
+              return (
+                <S.NumberedListItem key={index}>
+                  <S.Circle>
+                    <S.CircleNumber>{index + 1}</S.CircleNumber>
+                  </S.Circle>
+                  <S.DescriptionText>{value}</S.DescriptionText>
+                </S.NumberedListItem>
+              );
+            })}
           </S.NumberedList>
-          
+
           <S.TitleH2>Направления:</S.TitleH2>
           <S.PracticeList>
-            {
-              focusArray?.map((value, index) => {
-                return (
-                  <S.PracticeListItem key={index}>{value}</S.PracticeListItem>
-                )
-              })
-            }
+            {focusArray?.map((value, index) => {
+              return <S.PracticeListItem key={index}>{value}</S.PracticeListItem>;
+            })}
           </S.PracticeList>
 
-          <S.BenefitText>
-            {course?.description}
-          </S.BenefitText>
+          <S.BenefitText>{course?.description}</S.BenefitText>
 
           <S.BookBlock>
             <S.BookBlockText>
