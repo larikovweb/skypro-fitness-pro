@@ -87,7 +87,6 @@ export const DescriptionText = styled.p`
 export const PracticeList = styled.div`
   margin-top: 1.38rem;
   margin-bottom: 4.69rem;
-  height: 6rem;
   display: grid;
   grid-template-columns: 15.875rem 15.875rem;
   column-gap: 10.5rem;
@@ -100,6 +99,7 @@ export const PracticeListItem = styled.li`
   font-style: normal;
   font-weight: 400;
   line-height: 2rem;
+  margin-bottom: 0;
 `;
 
 export const BenefitText = styled.p`

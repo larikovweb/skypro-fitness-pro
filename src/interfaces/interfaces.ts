@@ -7,18 +7,20 @@ export interface IUser {
 export interface IExercise {
   name: string;
   reps: number;
+  myReps: number | null;
 }
 
 export interface IWorkout {
-  id: number;
+  id: number | string;
   title: string;
   url: string;
   exercises: IExercise[];
 }
 
 export interface ICourse {
-  id: number;
+  id: number | string;
   name: string;
+  img: string;
   description: string;
   suitableFor: string[];
   focus: string[];
