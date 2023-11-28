@@ -64,7 +64,7 @@ const Profile: FC = () => {
           <S.Title>Мои курсы</S.Title>
 
           <S.Courses>
-            {courses.map((course) => (
+            {courses&&courses.map((course) => (
               <CourseItem key={course.id} showBtn {...course} />
             ))}
           </S.Courses>
