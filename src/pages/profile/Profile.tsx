@@ -15,7 +15,6 @@ import { CourseItem } from '../../components/CourseItem/CourseItem';
 import { Link } from 'react-router-dom';
 import { MAIN_ROUTE } from '../../utils/consts';
 
-
 const Profile: FC = () => {
   const { email, id } = useAuth();
   const dispatch = useAppDispatch();
@@ -49,12 +48,12 @@ const Profile: FC = () => {
             </div>
 
             <S.Edit>
-              <ModalControl modal={<ModalNewLogin />}>
+              <ModalControl id="newLogin" modal={<ModalNewLogin />}>
                 <Button $primary type="submit">
                   Редактировать логин
                 </Button>
               </ModalControl>
-              <ModalControl modal={<ModalNewPassword />}>
+              <ModalControl id="newPassword" modal={<ModalNewPassword />}>
                 <Button $primary type="submit">
                   Редактировать пароль
                 </Button>

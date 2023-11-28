@@ -8,6 +8,7 @@ import { getAuth, signInWithEmailAndPassword, updatePassword } from 'firebase/au
 import { useForm } from 'react-hook-form';
 import { setUser } from '../../../store/slices/userSlice';
 import { useDispatch } from 'react-redux';
+import { useModal } from '../../../hooks/useModal';
 
 interface IFormInputs {
   newPassword: string;
@@ -16,6 +17,7 @@ interface IFormInputs {
 
 export const ModalNewPassword: FC = () => {
   const dispatch = useDispatch();
+  const { close } = useModal('newPassword');
 
   const {
     register,
@@ -29,12 +31,12 @@ export const ModalNewPassword: FC = () => {
   const onSubmit = async (data: IFormInputs) => {
     const auth = getAuth();
     const user = auth.currentUser;
-    console.log(user?.email);
-    console.log(data.newPassword);
+
     if (user && user !== null) {
       await updatePassword(user, data.newPassword)
         .then(() => {
           alert('Пароль успешно изменен');
+          close();
         })
         .catch((err) => {
           console.log(err);
@@ -66,6 +68,7 @@ export const ModalNewPassword: FC = () => {
       <S.Form onSubmit={handleSubmit(onSubmit)}>
         <S.Label>Новый пароль:</S.Label>
         <Input
+          type="password"
           placeholder="Пароль"
           {...register('newPassword', {
             required: 'Поле не может быть пустым',
@@ -84,6 +87,7 @@ export const ModalNewPassword: FC = () => {
           })}
         />
         <Input
+          type="password"
           placeholder="Повторите пароль"
           {...register('confirmPassword', {
             required: 'Поле не может быть пустым',

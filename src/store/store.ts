@@ -3,11 +3,13 @@ import user from './slices/userSlice';
 import courses from './slices/courseSlice';
 import userData from './slices/userDataSlice';
 import { useDispatch } from 'react-redux';
+import modalReducer from './slices/modalSlice';
 
 const rootReducer = combineReducers({
   user: user,
   courses: courses,
   userData: userData,
+  modal: modalReducer,
 });
 
 export const setupStore = () => {

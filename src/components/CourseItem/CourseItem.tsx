@@ -16,7 +16,7 @@ export const CourseItem: FC<Props> = ({ id, name, showBtn, img, workouts }) => {
       <S.CourseImage src={`${publicPath}${img}`} alt={name} />
       <S.CourseName>{name}</S.CourseName>
       {showBtn && (
-        <ModalControl modal={<ModalTrains courseId={id} workouts={workouts} />}>
+        <ModalControl id="trains" modal={<ModalTrains courseId={id} workouts={workouts} />}>
           <S.FurtherBtn>Перейти →</S.FurtherBtn>
         </ModalControl>
       )}
