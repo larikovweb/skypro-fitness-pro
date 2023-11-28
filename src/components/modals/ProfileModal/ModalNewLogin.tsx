@@ -16,8 +16,8 @@ export const ModalNewLogin: FC<Props> = () => {
   const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   const handleLogout = (): void => {
-    logout('/test-login');
-    navigate('/test-login');
+    logout('/login');
+    navigate('/login');
   };
   const useChangeEmail = (e: React.FormEvent) => {
     e.preventDefault();
