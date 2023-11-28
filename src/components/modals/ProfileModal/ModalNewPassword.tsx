@@ -1,73 +1,100 @@
-import { FC, useRef, MutableRefObject } from 'react';
+import { FC } from 'react';
 import { LogoIco } from '../../../icons';
 import { Input } from '../../form/Input';
 import { Button } from '../../form/Button';
 import * as S from './styles';
-import { getAuth, updatePassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { useDispatch } from 'react-redux';
+import { getAuth, signInWithEmailAndPassword, updatePassword } from 'firebase/auth';
+
+import { useForm } from 'react-hook-form';
 import { setUser } from '../../../store/slices/userSlice';
+import { useDispatch } from 'react-redux';
 
-type Props = {
-	isOpen?: boolean;
-};
+interface IFormInputs {
+  newPassword: string;
+  confirmPassword: string;
+}
 
-//test3@levis.levis
-//2U4AAmzdQsqzhbb46
-export const ModalNewPassword: FC<Props> = () => {
-	const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
+export const ModalNewPassword: FC = () => {
+  const dispatch = useDispatch();
 
-	const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<IFormInputs>();
 
-	const useChangePW = () => {
-		if (inputRef.current.value) {
-			const auth = getAuth();
-			const user = auth.currentUser;
+  const newPassword = watch('newPassword');
 
-			console.log(user);
-			if (user && user !== null) {
-				if (inputRef.current.value.length > 7) {
-					updatePassword(user, inputRef.current.value)
-						.then(() => {
-							console.log('updatePW');
-						})
-						.catch((err) => {
-							console.log(err);
-						});
-					signInWithEmailAndPassword(auth, user.email as string, inputRef.current.value)
-						.then((userCredential) => {
-							const user = userCredential.user;
-							dispatch(
-								setUser({
-									email: user.email,
-									id: user.uid,
-									token: user.refreshToken,
-								}),
-							);
-						})
-						.catch((error) => {
-							const errorCode = error.code;
-							const errorMessage = error.message;
-							alert(`${errorCode}: ${errorMessage}`);
-						});
-				} else {
-					alert('пароль должен содержать 8 и более символов');
-				}
-			}
-		}
-	};
-	return (
-		<S.Wrapper>
-			<S.Logo>
-				<LogoIco fillColor="#140d40" />
-			</S.Logo>
-			<S.Form>
-				<S.Label>Новый пароль:</S.Label>
-				<Input placeholder="Пароль" />
-				<Input placeholder="Повторите пароль" ref={inputRef} />
-				<Button $primary type="submit" onClick={useChangePW}>
-					Сохранить
-				</Button>
-			</S.Form>
-		</S.Wrapper>
-	);
+  const onSubmit = async (data: IFormInputs) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    console.log(user?.email);
+    console.log(data.newPassword);
+    if (user && user !== null) {
+      await updatePassword(user, data.newPassword)
+        .then(() => {
+          alert('Пароль успешно изменен');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      await signInWithEmailAndPassword(auth, user.email as string, data.newPassword)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          dispatch(
+            setUser({
+              email: user.email,
+              id: user.uid,
+              token: user.refreshToken,
+            }),
+          );
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(`${errorCode}: ${errorMessage}`);
+        });
+    }
+  };
+
+  return (
+    <S.Wrapper>
+      <S.Logo>
+        <LogoIco fillColor="#140d40" />
+      </S.Logo>
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
+        <S.Label>Новый пароль:</S.Label>
+        <Input
+          placeholder="Пароль"
+          {...register('newPassword', {
+            required: 'Поле не может быть пустым',
+            minLength: {
+              value: 6,
+              message: 'Пароль должен содержать хотя бы 6 символов',
+            },
+            maxLength: {
+              value: 20,
+              message: 'Пароль должен содержать не более 20 символов',
+            },
+            pattern: {
+              value: /(?=.*[0-9])/,
+              message: 'Пароль должен содержать хотя бы 1 цифру',
+            },
+          })}
+        />
+        <Input
+          placeholder="Повторите пароль"
+          {...register('confirmPassword', {
+            required: 'Поле не может быть пустым',
+            validate: (value) => value === newPassword || 'Пароли не совпадают',
+          })}
+        />
+        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+        <Button $primary type="submit">
+          Сохранить
+        </Button>
+      </S.Form>
+    </S.Wrapper>
+  );
 };
