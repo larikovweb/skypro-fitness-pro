@@ -10,7 +10,9 @@ export const ModalControl: FC<Props> = ({ modal, children }) => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div onClick={() => setOpen(true)}>{children}</div>
+      <div style={{ cursor: 'pointer', width: 'fit-content' }} onClick={() => setOpen(true)}>
+        {children}
+      </div>
       <ModalOverlay setOpen={setOpen} open={open}>
         {modal}
       </ModalOverlay>

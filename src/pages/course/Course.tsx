@@ -5,10 +5,10 @@ import { Container } from '../../styled/components';
 import { PhoneSvgImage } from '../../icons';
 import { useParams } from 'react-router-dom';
 import { useCourses } from '../../hooks/useCourses';
-import { saveUserCourses } from '../../services/courseService';
 import { useAuth } from '../../hooks/useAuth';
 import { HelmetHead } from '../../components/seo/HelmetHead';
 import { Loader } from '../../components/plug/Loader';
+import { saveCourses } from '../../services/userDataService';
 
 const Course: FC = () => {
   const courseId = useParams().id;
@@ -89,9 +89,7 @@ const Course: FC = () => {
                 Оставьте заявку на пробное занятие, мы свяжемся с вами, поможем с выбором
                 направления и тренера, с которым тренировки принесут здоровье и радость!
               </S.BookBlockH3>
-              <S.MyButton
-                onClick={() => userId && courseId && saveUserCourses(userId, [courseId])}
-                $primary>
+              <S.MyButton onClick={() => userId && course && saveCourses(userId, course)} $primary>
                 Записаться на тренировку
               </S.MyButton>
             </S.BookBlockText>

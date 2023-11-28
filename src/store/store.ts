@@ -1,13 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import user from './slices/userSlice';
 import courses from './slices/courseSlice';
-import userCourses from './slices/userCourseSlice';
+import userData from './slices/userDataSlice';
 import { useDispatch } from 'react-redux';
 
 const rootReducer = combineReducers({
   user: user,
   courses: courses,
-  userCourses: userCourses,
+  userData: userData,
 });
 
 export const setupStore = () => {
