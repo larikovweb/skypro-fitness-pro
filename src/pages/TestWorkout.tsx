@@ -10,6 +10,8 @@ import { InputField } from '../components/form/InputField';
 import { fetchUserData, saveExerciseReps } from '../services/userDataService';
 import { useAuth } from '../hooks/useAuth';
 import { useAppDispatch } from '../store/store';
+import { ProgressBar } from '../components/ProgressBar/ProgressBar';
+import * as S from '../components/ProgressBar/S.ProgressBar';
 
 type Form = {
   [key: string]: IExercise;
@@ -56,18 +58,31 @@ export const TestWorkout: FC = () => {
     }
   };
 
+  /*массив цветов шкалы прогресса*/
+  const progressData = [
+    { bgcolor: '#565EEF' },
+    { bgcolor: '#FF6D00' },
+    { bgcolor: '#9A48F1' },
+    { bgcolor: '#565EEF' },
+  ];
   return (
     <Container>
       {JSON.stringify(workout)}
-      {workout?.exercises.map((item, i) => (
-        <div key={i}>
-          <hr />
-          <div>
-            {item.name} <div>Reps: {item.reps}</div> <div>My reps: {item.myReps}</div>
-          </div>
-          <hr />
-        </div>
-      ))}
+      <S.ProgressBlock>
+        <S.Title> {workout?.title} </S.Title>
+        {workout?.exercises.map((item, i) => (
+          <>
+            <S.ProgressMain>
+              <S.TextBlockP> {item.name} </S.TextBlockP>
+              <ProgressBar
+                key={i}
+                bgcolor={progressData[i].bgcolor}
+                completed={item.myReps} max_completed={item.reps}
+              />
+            </S.ProgressMain>
+          </>
+        ))}
+      </S.ProgressBlock>
       <form onSubmit={handleSubmit(onSubmit)}>
         {workout?.exercises.map((item, i) => (
           <div key={i}>

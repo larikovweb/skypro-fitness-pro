@@ -15,6 +15,7 @@ import { CourseItem } from '../../components/CourseItem/CourseItem';
 import { Link } from 'react-router-dom';
 import { MAIN_ROUTE } from '../../utils/consts';
 
+
 const Profile: FC = () => {
   const { email, id } = useAuth();
   const dispatch = useAppDispatch();
@@ -32,7 +33,6 @@ const Profile: FC = () => {
   if (error) {
     return <div>{error}</div>;
   }
-  console.log(courses);
 
   return (
     <>
@@ -46,7 +46,6 @@ const Profile: FC = () => {
             <S.Title>Мой профиль</S.Title>
             <div>
               <S.Ptext>Логин: {email}</S.Ptext>
-              {/* <S.Ptext>Пароль: 4fkhdj880d</S.Ptext> */}
             </div>
 
             <S.Edit>
