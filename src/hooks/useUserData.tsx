@@ -6,8 +6,16 @@ export const useUserData = () => {
     (state: { userData: UserDataState }) => state.userData,
   );
 
+  if (!data) {
+    return {
+      courses: [],
+      status,
+      error,
+    };
+  }
+
   return {
-    courses: data?.courses,
+    courses: data.courses,
     status,
     error,
   };
