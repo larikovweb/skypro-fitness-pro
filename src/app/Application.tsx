@@ -7,7 +7,8 @@ import { ProtectedRoute } from '../components/helpers/ProtectedRoute';
 import { setupStore, useAppDispatch } from '../store/store';
 import { Provider } from 'react-redux';
 import { useAuth } from '../hooks/useAuth';
-import { fetchCourses, fetchUserCourses } from '../services/courseService';
+import { fetchCourses } from '../services/courseService';
+import { fetchUserData } from '../services/userDataService';
 const Application: FC = () => {
   const store = setupStore();
 
@@ -29,7 +30,7 @@ const RouteSelect: FC = () => {
 
   useEffect(() => {
     dispatch(fetchCourses());
-    id && dispatch(fetchUserCourses(id));
+    id && dispatch(fetchUserData(id));
   }, [dispatch, id]);
 
   return (

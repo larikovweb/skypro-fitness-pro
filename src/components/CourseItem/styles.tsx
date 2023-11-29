@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
 
 export const CourseCard = styled.div`
   position: relative;
@@ -26,7 +25,7 @@ export const CourseName = styled.h2`
   left: 1.88rem;
 `;
 
-export const FurtherBtn = styled(Link)`
+export const FurtherBtn = styled.div`
   display: inline-flex;
   padding: 0.625rem 1.25rem;
   justify-content: center;

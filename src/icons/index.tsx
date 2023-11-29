@@ -549,3 +549,10 @@ export const IconLoader = () => (
     </g>
   </svg>
 );
+
+export const IconCompleted = () => (
+  <svg viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="13.5" r="11.5" fill="none" />
+    <path d="M6 9.81034L11.775 15.5L27 0.5" fill="none" />
+  </svg>
+);

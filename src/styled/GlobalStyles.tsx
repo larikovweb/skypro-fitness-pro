@@ -1,7 +1,7 @@
 import { css, Global } from '@emotion/react';
 import { FC } from 'react';
-import { calcFluidFontSize, fontFace } from './mixins';
-import { StratosSkyeng } from '../assets/fonts/StratosSkyeng';
+import { calcFluidFontSize } from './mixins';
+import StratosSkyengWoff2 from '../assets/fonts/Stratos.woff2';
 import emotionReset from 'emotion-reset';
 import {
   $desktopWidth,
@@ -18,7 +18,12 @@ export const GlobalStyles: FC = () => (
   <Global
     styles={css`
       ${emotionReset}
-      ${fontFace('StratosSkyeng', StratosSkyeng, 400)}
+      @font-face {
+        font-family: 'Stratos';
+        src: local('Stratos'), url('${StratosSkyengWoff2}') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+      }
 
       html {
         font-family: ${$mainFont};

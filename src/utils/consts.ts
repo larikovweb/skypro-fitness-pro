@@ -4,6 +4,8 @@ export const ABOUT_ROUTE = '/about';
 export const PROFILE_ROUTE = '/profile';
 export const WORKOUT_ROUTE = '/workout';
 export const COURSE_ROUTE = '/course';
+export const LOGIN_ROUTE = '/login';
+export const REGISTER_ROUTE = '/register';
 export const NOT_FOUND_ROUTE = '*';
 
 // BREAKPOINTS

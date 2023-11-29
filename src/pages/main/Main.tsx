@@ -20,6 +20,15 @@ const Main: FC = () => {
     return <div>{error}</div>;
   }
 
+  const scrollPageUp = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <>
       <HelmetHead
@@ -39,17 +48,14 @@ const Main: FC = () => {
           <S.CenterBlock>
             {courses.map((course) => {
               return (
-                <Link
-                  // onClick={() => id && saveUserCourses(id.toString(), [course.id.toString()])}
-                  key={course.id}
-                  to={`/course/${course.id}`}>
+                <Link key={course.id} to={`/course/${course.id}`}>
                   <CourseItem {...course} showBtn={false} />
                 </Link>
               );
             })}
           </S.CenterBlock>
 
-          <S.ScrollUpBtn>Наверх ↑</S.ScrollUpBtn>
+          <S.ScrollUpBtn onClick={scrollPageUp}>Наверх ↑</S.ScrollUpBtn>
         </Container>
       </S.Main>
     </>
