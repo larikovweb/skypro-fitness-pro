@@ -33,8 +33,7 @@ export const ModalWorkout: FC<Props> = ({ courseId, workoutId, workout }) => {
     reset,
   } = useForm<TForm>();
 
-  const onSubmit = (data: TForm, event: any) => {
-    event.preventDefault();
+  const onSubmit = (data: TForm) => {
     if (courseId && userId && workoutId && workout) {
       saveExerciseReps(userId, courseId, workoutId, data)
         .then(() => {
