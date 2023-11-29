@@ -5,7 +5,7 @@ export const $desktopWidth = `${SCREEN_LG}px`;
 export const $tableWidth = `${SCREEN_MD}px`;
 export const $phoneWidth = `${SCREEN_SM}px`;
 
-export const $mainFont = 'StratosSkyeng, sans-serif';
+export const $mainFont = 'Stratos, sans-serif';
 export const $mainFontSize = '21.3333px';
 export const $mainFontColor = '#000000';
 export const $mainBackgroundColor = '#ffffff';
