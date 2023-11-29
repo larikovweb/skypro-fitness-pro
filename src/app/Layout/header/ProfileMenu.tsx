@@ -17,7 +17,7 @@ export const ProfileMenu: FC = () => {
 
   const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>): void => {
     e.preventDefault();
-    logout();
+    logout(MAIN_ROUTE);
     navigate(MAIN_ROUTE);
     setOpen(false);
   };

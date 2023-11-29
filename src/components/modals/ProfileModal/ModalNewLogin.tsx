@@ -6,6 +6,7 @@ import * as S from './styles';
 import { getAuth, verifyBeforeUpdateEmail } from 'firebase/auth';
 import { useAuth } from '../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { LOGIN_ROUTE } from '../../../utils/consts';
 type Props = {
   isOpen?: boolean;
 };
@@ -16,8 +17,8 @@ export const ModalNewLogin: FC<Props> = () => {
   const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   const handleLogout = (): void => {
-    logout();
-    navigate('/login');
+    logout(LOGIN_ROUTE);
+    navigate(LOGIN_ROUTE);
   };
   const useChangeEmail = (e: React.FormEvent) => {
     e.preventDefault();
