@@ -12,7 +12,7 @@ import Course from '../pages/course/Course';
 import TestLogin from '../pages/TestLogin';
 import TestRegister from '../pages/TestRegister';
 import Profile from '../pages/profile/Profile';
-import { TestWorkout } from '../pages/TestWorkout';
+import { Workout } from '../pages/workout/Workout';
 
 export type RouteType = {
   path: string;
@@ -31,5 +31,5 @@ export const publicRoutes: RouteType[] = [
 
 export const privateRoutes: RouteType[] = [
   { path: PROFILE_ROUTE, component: <Profile /> },
-  { path: `${WORKOUT_ROUTE}/:courseId/:workoutId`, component: <TestWorkout /> },
+  { path: `${WORKOUT_ROUTE}/:courseId/:workoutId`, component: <Workout /> },
 ];
