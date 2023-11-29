@@ -24,6 +24,7 @@ export const ModalWorkout: FC<Props> = ({ courseId, workoutId, workout }) => {
   const { id: userId } = useAuth();
   const dispatch = useAppDispatch();
   const { close } = useModal(`workout-${courseId}-${workoutId}`);
+  const { open } = useModal(`workout-${courseId}`);
 
   const {
     register,
@@ -40,6 +41,7 @@ export const ModalWorkout: FC<Props> = ({ courseId, workoutId, workout }) => {
           close();
           userId && dispatch(fetchUserData(userId));
           reset();
+          open();
         })
         .catch((error) => {
           console.error('Failed to save exercise reps:', error);

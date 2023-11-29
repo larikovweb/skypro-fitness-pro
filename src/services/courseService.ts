@@ -38,14 +38,10 @@ export const saveUserCourses = async (userId: string, courseIds: string[]) => {
   const db = getDatabase();
   const userCoursesRef = ref(db, `userCourses/${userId}`);
 
-  // Получить текущий список курсов пользователя
   const snapshot = await get(userCoursesRef);
   const currentCourses = snapshot.val() || [];
 
-  // Соединить текущий список курсов пользователя с новыми курсами,
-  // убедиться, что идентификаторы курсов уникальны
   const newCourses = Array.from(new Set([...currentCourses, ...courseIds]));
 
-  // Записать обновленный список курсов пользователя в базу данных
   set(userCoursesRef, newCourses);
 };

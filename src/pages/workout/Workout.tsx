@@ -8,7 +8,7 @@ import { Button } from '../../components/form/Button';
 import * as S from './styles';
 import { ModalControl } from '../../components/modals/ModalControl';
 import { ModalWorkout } from '../../components/modals/ModalWorkout';
-
+import { ModalProgressWorkout } from '../../components/modals/ModalProgressWorkout';
 export const Workout: FC = () => {
   const { courseId, workoutId } = useParams();
 
@@ -33,7 +33,6 @@ export const Workout: FC = () => {
 
   const title = workout?.title.split(' / ')[0];
   const descr = workout?.title.split(' / ').slice(1).join(' / ');
-
   return (
     <Container>
       <S.Title>{title}</S.Title>
@@ -60,6 +59,11 @@ export const Workout: FC = () => {
             id={`workout-${courseId}-${workoutId}`}
             modal={<ModalWorkout courseId={courseId} workoutId={workoutId} workout={workout} />}>
             <Button $primary>Заполнить свой прогресс</Button>
+          </ModalControl>
+          <ModalControl
+            id={`workout-${courseId}`}
+            modal={<ModalProgressWorkout courseId={courseId} />}>
+            <></>
           </ModalControl>
         </S.Block>
         {workout && <ProgressBar workoutId={workoutId} exercises={workout?.exercises} />}
