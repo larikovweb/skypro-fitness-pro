@@ -68,6 +68,7 @@ export const TestWorkout: FC = () => {
   return (
     <Container>
       {JSON.stringify(workout)}
+      <S.Title>{workout?.title}</S.Title>
       <S.ProgressBlock>
         <S.Title> {workout?.title} </S.Title>
         {workout?.exercises.map((item, i) => (

@@ -10,11 +10,13 @@ import { HelmetHead } from '../../components/seo/HelmetHead';
 import { Loader } from '../../components/plug/Loader';
 import { saveCourses } from '../../services/userDataService';
 import { ICourse } from '../../interfaces/interfaces';
+import { useModal } from '../../hooks/useModal';
 
 const Course: FC = () => {
   const courseId = useParams().id;
   const { id: userId } = useAuth();
   const navigate = useNavigate();
+  const { open } = useModal(`trains-${courseId}`);
 
   const { data, status, error } = useCourses();
   const course = data.find((course) => course.id.toString() === courseId) as ICourse;
@@ -37,11 +39,13 @@ const Course: FC = () => {
     '5': TitleImages.TitleImage5,
   };
 
-  const buyCourse = () => {
+  const buyCourse = async () => {
     if (userId && course) {
-      saveCourses(userId, course);
+      await saveCourses(userId, course);
+      open();
       navigate(`/profile`);
     } else {
+      alert('Для записи нужно зарегистрироваться');
       navigate(`/register`);
     }
   };

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { WORKOUT_ROUTE } from '../../utils/consts';
 import { isNumber } from '@bunt/is';
 import { IconCompleted } from '../../icons';
+import { useModal } from '../../hooks/useModal';
 
 type Props = {
   courseId: number | string;
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export const ModalTrains: FC<Props> = ({ workouts, courseId }) => {
+  const { close } = useModal(`trains-${courseId}`);
   return (
     <Wrapper>
       <Title>Выберите тренировку</Title>
@@ -23,6 +25,7 @@ export const ModalTrains: FC<Props> = ({ workouts, courseId }) => {
           const isCompleted = isNumber(workout.exercises[0].myReps);
           return (
             <Train
+              close={close}
               id={workout.id}
               isCompleted={isCompleted}
               courseId={courseId}
@@ -43,9 +46,13 @@ const Train: FC<{
   descr: string;
   courseId: number | string;
   isCompleted: boolean;
-}> = ({ id, name, descr, courseId, isCompleted }) => {
+  close: () => void;
+}> = ({ id, name, descr, courseId, isCompleted, close }) => {
   return (
-    <TrainWrapper to={`${WORKOUT_ROUTE}/${courseId}/${id}`} $completed={isCompleted}>
+    <TrainWrapper
+      to={`${WORKOUT_ROUTE}/${courseId}/${id}`}
+      onClick={close}
+      $completed={isCompleted}>
       {isCompleted && <IconCompleted />}
       <b>{name}</b>
       {descr && <span>{descr}</span>}
