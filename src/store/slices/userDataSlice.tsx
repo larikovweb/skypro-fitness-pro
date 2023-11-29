@@ -29,14 +29,19 @@ const userDataSlice = createSlice({
       .addCase(fetchUserData.fulfilled, (state, action: PayloadAction<IUserData>) => {
         state.status = 'succeeded';
         if (action.payload) {
-          if (Array.isArray(action.payload.courses)) {
+          // Предполагаем, что action.payload.courses — это объект с ключами как id курсов
+          if (typeof action.payload.courses === 'object' && action.payload.courses !== null) {
+            // Преобразуем объект курсов в массив
+            const coursesArray = Object.values(action.payload.courses);
+            // Фильтруем массив, если необходимо, для удаления неопределенных значений
+            const filteredCourses = coursesArray.filter((course) => !isUndefined(course));
             state.data = {
               ...action.payload,
-              courses: action.payload.courses.filter((course) => !isUndefined(course)),
+              courses: filteredCourses,
             };
           } else {
-            // Handle case where action.payload.courses is not an array
-            console.error('action.payload.courses is not an array');
+            // Если курсы не являются объектом, записываем ошибку
+            console.error('action.payload.courses is not an object');
           }
         } else {
           state.data = {
