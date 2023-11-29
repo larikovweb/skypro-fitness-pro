@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   background: #f2f2f2;
   flex-direction: column;
   padding: 2.25rem 2.75rem 2rem;
+  height: fit-content;
 `;
 
 export const Title = styled.p`
