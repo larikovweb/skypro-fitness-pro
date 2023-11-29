@@ -8,62 +8,67 @@ import { Button } from '../../components/form/Button';
 import * as S from './styles';
 import { ModalControl } from '../../components/modals/ModalControl';
 import { ModalWorkout } from '../../components/modals/ModalWorkout';
-
+import { ModalProgressWorkout } from '../../components/modals/ModalProgressWorkout';
 export const Workout: FC = () => {
-  const { courseId, workoutId } = useParams();
+	const { courseId, workoutId } = useParams();
 
-  const { courses, status, error } = useUserData();
+	const { courses, status, error } = useUserData();
 
-  const course = courses?.find((item) => item && item.id == courseId);
+	const course = courses?.find((item) => item && item.id == courseId);
 
-  const workout = course?.workouts.find((item) => item.id == workoutId);
+	const workout = course?.workouts.find((item) => item.id == workoutId);
 
-  if (status === 'loading') {
-    return <Loader />;
-  }
+	if (status === 'loading') {
+		return <Loader />;
+	}
 
-  if (error) {
-    return <div>{error}</div>;
-  }
+	if (error) {
+		return <div>{error}</div>;
+	}
 
-  function getYoutubeEmbedUrl(url: string | undefined) {
-    const videoId = url && url.split('https://youtu.be/')[1];
-    return 'https://www.youtube.com/embed/' + videoId;
-  }
+	function getYoutubeEmbedUrl(url: string | undefined) {
+		const videoId = url && url.split('https://youtu.be/')[1];
+		return 'https://www.youtube.com/embed/' + videoId;
+	}
 
-  const title = workout?.title.split(' / ')[0];
-  const descr = workout?.title.split(' / ').slice(1).join(' / ');
-
-  return (
-    <Container>
-      <S.Title>{title}</S.Title>
-      <S.Descr>{descr}</S.Descr>
-      <S.Video>
-        <iframe
-          src={getYoutubeEmbedUrl(workout?.url)}
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        />
-      </S.Video>
-      <S.Wrapper>
-        <S.Block>
-          <S.Label>Упражнения</S.Label>
-          <S.List>
-            {workout?.exercises.map((item, i) => (
-              <li key={i}>
-                {item.name} ({item.reps} повторений)
-              </li>
-            ))}
-          </S.List>
-          <ModalControl
-            id={`workout-${courseId}-${workoutId}`}
+	const title = workout?.title.split(' / ')[0];
+	const descr = workout?.title.split(' / ').slice(1).join(' / ');
+	return (
+		<Container>
+			<S.Title>{title}</S.Title>
+			<S.Descr>{descr}</S.Descr>
+			<S.Video>
+				<iframe
+					src={getYoutubeEmbedUrl(workout?.url)}
+					title="YouTube video player"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowFullScreen
+				/>
+			</S.Video>
+			<S.Wrapper>
+				<S.Block>
+					<S.Label>Упражнения</S.Label>
+					<S.List>
+						{workout?.exercises.map((item, i) => (
+							<li key={i}>
+								{item.name} ({item.reps} повторений)
+							</li>
+						))}
+					</S.List>
+					<ModalControl
+						id={`workout-${courseId}-${workoutId}`}
             modal={<ModalWorkout courseId={courseId} workoutId={workoutId} workout={workout} />}>
-            <Button $primary>Заполнить свой прогресс</Button>
-          </ModalControl>
-        </S.Block>
-        {workout && <ProgressBar workoutId={workoutId} exercises={workout?.exercises} />}
-      </S.Wrapper>
-    </Container>
-  );
+            
+						<Button $primary>Заполнить свой прогресс</Button>
+					</ModalControl>
+					<ModalControl
+						id={`workout-${courseId}`}
+						modal={<ModalProgressWorkout courseId={courseId} />}>
+						<p></p>
+					</ModalControl>
+				</S.Block>
+				{workout && <ProgressBar workoutId={workoutId} exercises={workout?.exercises} />}
+			</S.Wrapper>
+		</Container>
+	);
 };
