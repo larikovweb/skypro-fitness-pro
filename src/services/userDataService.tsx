@@ -23,7 +23,7 @@ export const saveCourses = async (userId: string, course: ICourse) => {
   const db = getDatabase();
   const userDataRef = ref(db, `userData/${userId}/courses/${course.id}`);
 
-  set(userDataRef, course);
+  await set(userDataRef, course);
 };
 
 export const saveExerciseReps = async (
