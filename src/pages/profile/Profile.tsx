@@ -21,10 +21,9 @@ const Profile: FC = () => {
 
   useEffect(() => {
     id && dispatch(fetchUserData(id));
-  }, [dispatch, id]);
+  }, [id, dispatch]);
 
   const { courses, status, error } = useUserData();
-
   if (status === 'loading') {
     return <Loader />;
   }
